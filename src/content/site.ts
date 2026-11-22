@@ -14,7 +14,7 @@ export const site = {
   social: {
     linkedin: "https://www.linkedin.com/in/sworuprajpoudel",
     github: "https://github.com/mesrp88",
-    facebook: "https://www.facebook.com/share/1FEjbz5u31/",
+    facebook: "https://www.facebook.com/mesrp88",
     instagram: "https://www.instagram.com/sworupraj__",
   },
   stats: [
