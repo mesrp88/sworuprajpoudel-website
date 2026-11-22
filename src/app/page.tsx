@@ -25,15 +25,15 @@ export default async function Home() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#13221a] via-[#13221a]/70 to-[#13221a]/20" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#13221a]/80 to-transparent" />
-        <Container className="relative flex min-h-[88vh] flex-col justify-end pt-24 pb-16 md:pb-24">
+        <Container className="relative flex h-[calc(100svh-var(--header-h))] min-h-[30rem] flex-col justify-end py-[clamp(1.5rem,6vh,4rem)]">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fibre-light">
             Natural fibres · Engineered solutions
           </p>
-          <h1 className="mt-6 max-w-4xl font-display text-5xl leading-[1.02] font-medium md:text-7xl lg:text-8xl">
+          <h1 className="mt-[clamp(0.75rem,2.5vh,1.5rem)] max-w-4xl font-display text-[clamp(2.4rem,min(9vw,10.5svh),6rem)] leading-[1.02] font-medium">
             Engineering what <em className="text-fibre-light">nature</em> already grew.
           </h1>
-          <p className="mt-8 max-w-xl text-lg text-paper/80">{site.tagline}</p>
-          <div className="mt-10 flex flex-wrap gap-3">
+          <p className="mt-[clamp(1rem,3vh,2rem)] max-w-xl text-base text-paper/80 md:text-lg">{site.tagline}</p>
+          <div className="mt-[clamp(1.25rem,4vh,2.5rem)] flex flex-wrap gap-3">
             <Link
               href="/contact"
               className="rounded-full bg-paper px-6 py-3 text-sm font-medium text-ink transition-colors hover:bg-fibre-light"
