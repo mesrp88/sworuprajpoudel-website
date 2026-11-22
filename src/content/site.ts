@@ -7,16 +7,15 @@ export const site = {
   shortBio:
     "I'm a mechanical engineer and Technical Lead Engineer at NIDISI-Sparsa Nepal, where we make compostable sanitary pads from banana fibre. I help entrepreneurs, NGOs and manufacturers turn natural fibres into hygiene products — and design, select and source the machines that make them.",
   location: "Bharatpur, Chitwan, Nepal",
-  // TODO: replace with your real public email address
-  email: "",
+  email: "sworuprajpoudel@gmail.com",
   phone: "+977 9819669865",
   whatsapp: "9779819669865",
   // TODO: paste your profile URLs; empty ones are hidden automatically
   social: {
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/sworuprajpoudel",
     github: "",
     facebook: "",
-    instagram: "",
+    instagram: "https://www.instagram.com/sworupraj__",
   },
   stats: [
     { value: "4+", label: "years as a technical lead" },
