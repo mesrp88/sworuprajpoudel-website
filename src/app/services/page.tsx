@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { ButtonLink, Container, PageHeader } from "@/components/ui";
+import { ConsultingOptions } from "@/components/ConsultingOptions";
+import { Container, Eyebrow, PageHeader } from "@/components/ui";
 import { getServices } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -39,9 +40,21 @@ export default async function ServicesPage() {
           </section>
         ))}
       </Container>
-      <Container className="pt-8 text-center">
-        <ButtonLink href="/contact">Discuss your project</ButtonLink>
-      </Container>
+      <section id="options" className="scroll-mt-20 border-t border-line/70 bg-paper-deep/40">
+        <Container className="py-20">
+          <Eyebrow>Ways to work together</Eyebrow>
+          <h2 className="mt-3 max-w-2xl font-display text-4xl font-semibold md:text-5xl">
+            Start with a free 15-minute call.
+          </h2>
+          <p className="mt-4 max-w-2xl text-lg text-ink-soft">
+            Most projects move through these stages. Join at whichever one fits you; every quote is agreed with you
+            before work starts.
+          </p>
+          <div className="mt-12">
+            <ConsultingOptions />
+          </div>
+        </Container>
+      </section>
     </>
   );
 }

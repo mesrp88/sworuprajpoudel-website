@@ -68,6 +68,6 @@ export const faqs = [
   },
   {
     q: "How does a consultation work?",
-    a: "Send a message through the contact form or WhatsApp with a few details about your project. From there we'll agree on what help you need.",
+    a: "Start with a free 15-minute introductory call. Book it through the contact form or message me on WhatsApp. If I can help, I'll suggest the right next step, such as a feasibility assessment, and send you a quote before any paid work starts.",
   },
 ];

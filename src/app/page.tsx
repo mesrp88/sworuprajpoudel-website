@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ConsultingOptions } from "@/components/ConsultingOptions";
 import { ProcessIcon } from "@/components/Icons";
 import { Reveal } from "@/components/Reveal";
 import { ButtonLink, Container, Eyebrow, Media, Photo, Tag } from "@/components/ui";
@@ -185,6 +186,17 @@ export default async function Home() {
                 </div>
               </Reveal>
             ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Ways to work together */}
+      <section id="options" className="scroll-mt-20 border-t border-line/70 bg-paper-deep/40">
+        <Container className="py-24">
+          <Eyebrow>Ways to work together</Eyebrow>
+          <h2 className="mt-3 max-w-2xl font-display text-4xl font-semibold md:text-5xl">Start with a free 15-minute call.</h2>
+          <div className="mt-12">
+            <ConsultingOptions />
           </div>
         </Container>
       </section>

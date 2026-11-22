@@ -2,6 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { useActionState } from "react";
+import { consultingOptions } from "@/content/consulting";
 import { fibreProducts } from "@/content/products";
 import { sendEnquiry, type ContactState } from "./actions";
 
@@ -15,6 +16,7 @@ export function ContactForm() {
   const params = useSearchParams();
   const buying = params.get("interest") === "buy";
   const product = fibreProducts.find((p) => p.slug === params.get("product"));
+  const option = consultingOptions.find((o) => o.slug === params.get("option"));
 
   if (state.status === "success") {
     return (
@@ -27,6 +29,13 @@ export function ContactForm() {
 
   return (
     <form action={action} className="space-y-5" noValidate>
+      {option && (
+        <p className="rounded-md border border-leaf/30 bg-leaf/5 p-4 text-[0.95rem]">
+          {option.free
+            ? "You're booking the free 15-minute introductory call. Tell me a little about your project and when suits you, and I'll confirm a time."
+            : `You're asking about: ${option.name}. Share a few details and I'll reply with a quote.`}
+        </p>
+      )}
       {/* honeypot */}
       <input type="text" name="company_website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
 
@@ -74,6 +83,23 @@ export function ContactForm() {
           </select>
         </label>
       </div>
+      {!buying && (
+        <div className="grid gap-5 sm:grid-cols-2">
+          <label className="block text-sm font-medium">
+            Type of consultation
+            <select name="option" className={field} defaultValue={option?.name ?? ""}>
+              <option value="">Not sure yet</option>
+              {consultingOptions.map((o) => (
+                <option key={o.slug}>{o.name}</option>
+              ))}
+            </select>
+          </label>
+          <label className="block text-sm font-medium">
+            Best time for a call
+            <input name="callTime" placeholder="e.g. weekdays after 4 pm Nepal time" className={field} />
+          </label>
+        </div>
+      )}
       {buying && (
         <div className="grid gap-5 sm:grid-cols-2">
           <label className="block text-sm font-medium">

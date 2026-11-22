@@ -38,7 +38,7 @@ export function Header() {
             );
           })}
           <Link
-            href="/contact"
+            href="/contact?option=intro-call"
             className="rounded-md bg-leaf px-4 py-2 text-sm font-medium text-paper transition-colors hover:bg-leaf-dark"
           >
             Book a consultation
@@ -71,7 +71,7 @@ export function Header() {
             </Link>
           ))}
           <Link
-            href="/contact"
+            href="/contact?option=intro-call"
             onClick={() => setOpen(false)}
             className="mt-4 block rounded-md bg-leaf px-4 py-3 text-center font-medium text-paper"
           >
