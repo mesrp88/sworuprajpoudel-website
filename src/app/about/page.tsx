@@ -6,7 +6,7 @@ import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `${site.name} — mechanical engineer and Technical Lead Engineer at NIDISI-Sparsa Nepal.`,
+  description: `${site.name} — mechanical engineer and Research and Product Development Engineer at NIDISI-Sparsa Nepal.`,
 };
 
 const research = [
@@ -21,8 +21,8 @@ const milestones = [
   { when: "Start", title: "Mechanical Engineering degree", text: "Bachelor's degree in Mechanical Engineering." },
   {
     when: "4+ years",
-    title: "Technical Lead Engineer, NIDISI-Sparsa Nepal",
-    text: "Leading technical work on compostable sanitary pads made from banana fibre.",
+    title: "Research and Product Development Engineer, NIDISI-Sparsa Nepal",
+    text: "Research and product development for compostable sanitary pads made from banana fibre.",
   },
   {
     when: "R&D",
@@ -89,8 +89,8 @@ export default function AboutPage() {
             <p className="mt-2 text-clay">{site.role}</p>
             <div className="mt-6 space-y-4 text-lg text-ink-soft">
               <p>
-                For more than four years I&apos;ve worked as a technical lead at NIDISI-Sparsa Nepal, where we make
-                compostable sanitary pads from banana fibre.
+                I work as a Research and Product Development Engineer at NIDISI-Sparsa Nepal, where we make compostable
+                sanitary pads from banana fibre, and I bring more than four years of engineering experience to the role.
               </p>
               <p>
                 That work sits right where materials meet machines: extracting and treating fibre, designing the pad

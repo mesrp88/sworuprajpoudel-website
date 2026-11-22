@@ -1,6 +1,13 @@
 import Link from "next/link";
 import { nav, site } from "@/content/site";
 
+const socialLabels: Record<string, string> = {
+  linkedin: "LinkedIn",
+  github: "GitHub",
+  facebook: "Facebook",
+  instagram: "Instagram",
+};
+
 export function Footer() {
   const socials = Object.entries(site.social).filter(([, url]) => url);
   return (
@@ -53,11 +60,11 @@ export function Footer() {
             )}
           </ul>
           {socials.length > 0 && (
-            <ul className="mt-5 flex gap-4 text-sm capitalize">
+            <ul className="mt-5 flex flex-wrap gap-4 text-sm">
               {socials.map(([name, url]) => (
                 <li key={name}>
                   <a href={url} target="_blank" rel="noopener" className="underline-offset-4 hover:underline">
-                    {name}
+                    {socialLabels[name] ?? name}
                   </a>
                 </li>
               ))}
