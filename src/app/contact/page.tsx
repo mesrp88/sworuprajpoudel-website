@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Container, PageHeader, Photo } from "@/components/ui";
-import { site } from "@/content/site";
 import { ContactForm } from "./ContactForm";
 
 export const metadata: Metadata = {
@@ -28,34 +27,6 @@ export default function ContactPage() {
             className="aspect-[4/3]"
             position="58% 40%"
           />
-          <div className="rounded-md border border-line p-6">
-            <h2 className="font-display text-xl">Prefer to message directly?</h2>
-            <ul className="mt-4 space-y-3 text-sm">
-              <li>
-                <a
-                  href={`https://wa.me/${site.whatsapp}`}
-                  target="_blank"
-                  rel="noopener"
-                  className="font-medium text-leaf hover:underline"
-                >
-                  WhatsApp
-                </a>
-              </li>
-              <li>
-                <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="hover:underline">
-                  {site.phone}
-                </a>
-              </li>
-              {site.email && (
-                <li>
-                  <a href={`mailto:${site.email}`} className="hover:underline">
-                    {site.email}
-                  </a>
-                </li>
-              )}
-              <li className="text-ink-soft">{site.location}</li>
-            </ul>
-          </div>
           <div className="fibre-pattern rounded-md border border-line p-6 text-sm">
             <p className="font-semibold">Helpful to include</p>
             <ul className="mt-2 list-disc space-y-1 pl-5 text-ink-soft">
