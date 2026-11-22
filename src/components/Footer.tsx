@@ -66,7 +66,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-paper/10 py-5 text-center text-xs text-paper/50">
-        © <CopyrightYear /> {site.name}
+        © <CopyrightYear /> {site.name} · Photos courtesy of NIDISI Nepal
       </div>
     </footer>
   );
