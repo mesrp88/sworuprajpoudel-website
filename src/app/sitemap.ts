@@ -4,7 +4,7 @@ import { getMaterials, getPosts, getProjects } from "@/lib/content";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [materials, projects, posts] = await Promise.all([getMaterials(), getProjects(), getPosts()]);
-  const pages = ["", "/services", "/materials", "/projects", "/insights", "/about", "/contact"];
+  const pages = ["", "/services", "/research", "/materials", "/projects", "/insights", "/about", "/contact"];
   return [
     ...pages.map((p) => ({ url: `${site.url}${p}` })),
     ...materials.map((m) => ({ url: `${site.url}/materials/${m.slug}` })),

@@ -22,7 +22,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex" aria-label="Main">
+        <nav className="hidden items-center gap-6 lg:flex" aria-label="Main">
           {nav.map((item) => {
             const active = pathname.startsWith(item.href);
             return (
@@ -47,7 +47,7 @@ export function Header() {
 
         <button
           type="button"
-          className="rounded-md p-2 md:hidden"
+          className="rounded-md p-2 lg:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
@@ -59,7 +59,7 @@ export function Header() {
       </div>
 
       {open && (
-        <nav className="border-t border-line bg-paper px-5 pb-5 md:hidden" aria-label="Mobile">
+        <nav className="border-t border-line bg-paper px-5 pb-5 lg:hidden" aria-label="Mobile">
           {nav.map((item) => (
             <Link
               key={item.href}

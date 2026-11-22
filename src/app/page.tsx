@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ProcessIcon } from "@/components/Icons";
 import { Reveal } from "@/components/Reveal";
-import { ButtonLink, Container, Eyebrow, Media, Photo, PhotoPlaceholder, Tag } from "@/components/ui";
+import { ButtonLink, Container, Eyebrow, Media, Photo, Tag } from "@/components/ui";
 import { applications, faqs, processSteps } from "@/content/home";
 import { site } from "@/content/site";
 import { getMaterials, getProjects, getServices } from "@/lib/content";
@@ -191,6 +191,35 @@ export default async function Home() {
         </Container>
       </section>
 
+      {/* R&D teaser */}
+      <section className="relative overflow-hidden bg-ink text-paper">
+        <Image
+          src="/images/lab-overhead.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover"
+          style={{ objectPosition: "50% 45%" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#13221a] via-[#13221a]/85 to-[#13221a]/30" />
+        <Container className="relative py-28">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fibre-light">Research, development & testing</p>
+          <h2 className="mt-3 max-w-xl font-display text-4xl font-medium md:text-5xl">
+            Evidence <em className="text-fibre-light">before</em> production.
+          </h2>
+          <p className="mt-5 max-w-lg text-lg text-paper/80">
+            Fibre treatment trials, absorbency tests and test-liquid research — so every improvement is backed by
+            results.
+          </p>
+          <Link
+            href="/research"
+            className="mt-8 inline-block rounded-full bg-paper px-6 py-3 text-sm font-medium text-ink transition-colors hover:bg-fibre-light"
+          >
+            Inside the lab →
+          </Link>
+        </Container>
+      </section>
+
       {/* Materials band */}
       <section className="bg-leaf text-paper">
         <Container className="py-24">
@@ -239,7 +268,7 @@ export default async function Home() {
             {projects.slice(0, 3).map((p, i) => (
               <Reveal key={p.slug} delay={i * 120}>
                 <Link href={`/projects/${p.slug}`} className="group block">
-                  <PhotoPlaceholder label={p.title} className="aspect-[4/3]" />
+                  <Media src={p.image} alt={p.title} className="aspect-[4/3]" />
                   <p className="mt-4 text-xs uppercase tracking-widest text-clay">{p.category}</p>
                   <h3 className="mt-1 font-display text-xl font-medium group-hover:text-leaf">{p.title}</h3>
                   <div className="mt-3 flex flex-wrap gap-2">

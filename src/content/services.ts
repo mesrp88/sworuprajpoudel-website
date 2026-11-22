@@ -34,6 +34,21 @@ export const services: Service[] = [
       "Producers who need equipment that works with local fabrication skills, and teams scaling from manual to semi-automatic production.",
   },
   {
+    slug: "research-testing",
+    title: "R&D & product testing",
+    summary:
+      "Lab trials and testing to develop new products, improve existing ones and keep quality consistent.",
+    points: [
+      "Fibre treatment trials: concentration, time, neutralisation",
+      "Absorbency testing with suitable test liquids",
+      "Practical quality-control tests for daily production",
+      "Advice on setting up a simple testing lab",
+    ],
+    forWho:
+      "Producers who want evidence that their product works, and teams developing a new natural-fibre product.",
+    image: "/images/pouring-test-liquid.jpg",
+  },
+  {
     slug: "sourcing",
     title: "Machine & raw-material sourcing",
     summary:

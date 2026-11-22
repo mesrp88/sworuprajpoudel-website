@@ -19,6 +19,7 @@ export const projects: Project[] = [
     outcome: "Details and results coming soon.",
     tags: ["Lamination", "Glue systems", "Sanitary pads"],
     draft: true,
+    image: "/images/fibre-in-hand.jpg",
   },
   {
     slug: "rotary-die-absorbent-core",
@@ -35,6 +36,24 @@ export const projects: Project[] = [
     outcome: "Details and results coming soon.",
     tags: ["Tooling", "Die cutting", "Workshop fabrication"],
     draft: true,
+  },
+  {
+    slug: "test-liquids-absorbency",
+    title: "Choosing test liquids for pad absorbency testing",
+    category: "Research",
+    summary:
+      "Comparing liquids used to simulate menstrual fluid, so lab absorbency tests reflect how pads perform in real use.",
+    challenge:
+      "Absorbency results depend heavily on the test liquid. Water behaves very differently from menstrual fluid, so a reliable simulant was needed.",
+    approach: [
+      "Reviewed liquids used for pad testing, from animal blood to synthetic fluids and dye solutions",
+      "Compared them on how closely they match real use and how practical they are in a small lab",
+      "Set up dosing, timing and weighing for repeatable tests",
+    ],
+    outcome: "Details and results coming soon.",
+    tags: ["Absorbency testing", "Test methods", "R&D"],
+    draft: true,
+    image: "/images/absorbency-drop-test.jpg",
   },
   {
     slug: "fibre-extractor",
@@ -68,6 +87,7 @@ export const projects: Project[] = [
     outcome: "Details and results coming soon.",
     tags: ["Fibre treatment", "R&D", "Banana fibre"],
     draft: true,
+    image: "/images/titration-setup.jpg",
   },
   {
     slug: "textile-fibre-cutter",

@@ -33,6 +33,7 @@ export type Project = {
   outcome: string;
   tags: string[];
   draft?: boolean; // shows a "details coming soon" note
+  image?: string;
 };
 
 export type Post = {

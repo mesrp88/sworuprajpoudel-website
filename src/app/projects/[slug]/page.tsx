@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ButtonLink, Container, Eyebrow, PhotoPlaceholder, Tag } from "@/components/ui";
+import { ButtonLink, Container, Media, Eyebrow, Tag } from "@/components/ui";
 import { getProject, getProjects } from "@/lib/content";
 
 export async function generateStaticParams() {
@@ -27,7 +27,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
         ))}
       </div>
 
-      <PhotoPlaceholder label={p.title} className="mt-10 aspect-[16/9]" />
+      <Media src={p.image} alt={p.title} className="mt-10 aspect-[16/9]" />
 
       <div className="mt-12 grid gap-10 md:grid-cols-3">
         <section>

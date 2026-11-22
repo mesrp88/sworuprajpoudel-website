@@ -115,6 +115,13 @@ export default function AboutPage() {
         <Container className="py-24">
           <Eyebrow>From research to real products</Eyebrow>
           <h2 className="mt-3 max-w-2xl font-display text-4xl font-medium">What I work on.</h2>
+          <p className="mt-3 text-ink-soft">
+            See more on the{" "}
+            <a href="/research" className="font-medium text-leaf underline-offset-4 hover:underline">
+              R&D and testing page
+            </a>
+            .
+          </p>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {research.map((r, i) => (
               <Reveal key={r.title} delay={i * 100}>

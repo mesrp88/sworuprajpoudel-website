@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Container, PageHeader, PhotoPlaceholder, Tag } from "@/components/ui";
+import { Container, Media, PageHeader, Tag } from "@/components/ui";
 import { getProjects } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export default async function ProjectsPage() {
       <Container className="grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((p) => (
           <Link key={p.slug} href={`/projects/${p.slug}`} className="group">
-            <PhotoPlaceholder label={p.title} className="aspect-[4/3]" />
+            <Media src={p.image} alt={p.title} className="aspect-[4/3]" />
             <p className="mt-4 text-xs uppercase tracking-widest text-fibre">{p.category}</p>
             <h2 className="mt-1 font-display text-xl font-medium group-hover:text-leaf">{p.title}</h2>
             <p className="mt-2 text-sm text-ink-soft">{p.summary}</p>
