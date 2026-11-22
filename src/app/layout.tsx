@@ -5,6 +5,8 @@ import "@fontsource-variable/inter";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { StructuredData } from "@/components/StructuredData";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -30,6 +32,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <WhatsAppButton />
+        <StructuredData />
         <Analytics />
       </body>
     </html>
