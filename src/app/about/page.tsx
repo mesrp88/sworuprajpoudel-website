@@ -53,19 +53,19 @@ export default function AboutPage() {
           style={{ objectPosition: "60% 40%" }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-leaf-night via-leaf-night/85 to-leaf-night/30" />
-        <Container className="relative py-24 md:py-32">
-          <p className="font-display font-medium text-sm text-fibre-light">My story</p>
-          <h1 className="mt-5 max-w-3xl font-display text-5xl leading-[1.05] font-medium md:text-7xl">
+        <Container className="relative flex min-h-[calc(100svh-var(--header-h))] flex-col justify-center py-[clamp(2rem,6vh,4.5rem)]">
+          <p className="font-display text-base font-medium text-fibre-light">My story</p>
+          <h1 className="mt-[clamp(0.5rem,2vh,1.25rem)] max-w-4xl font-display text-[clamp(2.75rem,min(9vw,11svh),5.5rem)] font-bold">
             Built in the workshop, tested in the lab.
           </h1>
-          <p className="mt-8 max-w-2xl text-lg text-paper/80">
+          <p className="mt-[clamp(0.75rem,3vh,2rem)] max-w-2xl text-lg text-paper/85">
             I&apos;m {site.name}, a mechanical engineer from Nepal working where natural fibres meet machines.
           </p>
-          <div className="mt-14 grid max-w-3xl gap-8 border-t border-paper/20 pt-8 sm:grid-cols-3">
+          <div className="mt-[clamp(1.5rem,6vh,3.5rem)] grid max-w-3xl grid-cols-3 gap-4 border-t border-paper/20 pt-[clamp(1rem,3vh,2rem)] sm:gap-6">
             {site.stats.map((s) => (
               <div key={s.label}>
-                <p className="font-display text-4xl text-fibre-light">{s.value}</p>
-                <p className="mt-1 text-sm text-paper/70">{s.label}</p>
+                <p className="font-display text-3xl text-fibre-light sm:text-4xl">{s.value}</p>
+                <p className="mt-1 text-xs leading-snug text-paper/70 sm:text-sm">{s.label}</p>
               </div>
             ))}
           </div>
