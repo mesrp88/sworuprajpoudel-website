@@ -10,6 +10,7 @@
   --color-fibre: #c08a3e;
   --color-fibre-light: #e8cfa3;
   --color-line: #d8cfbc;
+  --color-clay: #b4492f;
 
   --font-display: "Fraunces Variable", Georgia, serif;
   --font-sans: "Inter Variable", system-ui, sans-serif;
@@ -62,4 +63,14 @@ footer {
       rgba(47, 93, 58, 0.1) 0 1px,
       transparent 1px 14px
     );
+}
+
+/* dark fibrous backdrop for full-bleed photo areas until real photos arrive */
+.hero-backdrop {
+  background-color: #1a2e21;
+  background-image:
+    radial-gradient(ellipse at 75% 30%, rgba(192, 138, 62, 0.35), transparent 55%),
+    radial-gradient(ellipse at 15% 85%, rgba(47, 93, 58, 0.6), transparent 60%),
+    repeating-linear-gradient(112deg, rgba(232, 207, 163, 0.07) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(97deg, rgba(232, 207, 163, 0.05) 0 1px, transparent 1px 13px);
 }

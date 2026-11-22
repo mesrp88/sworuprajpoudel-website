@@ -11,11 +11,11 @@ export function Eyebrow({ children }: { children: ReactNode }) {
 
 export function PageHeader({ eyebrow, title, intro }: { eyebrow: string; title: string; intro?: string }) {
   return (
-    <section className="border-b border-line/70">
-      <Container className="py-16 md:py-20">
-        <Eyebrow>{eyebrow}</Eyebrow>
-        <h1 className="mt-4 max-w-3xl font-display text-4xl leading-tight font-medium md:text-5xl">{title}</h1>
-        {intro && <p className="mt-5 max-w-2xl text-lg text-ink-soft">{intro}</p>}
+    <section className="hero-backdrop text-paper">
+      <Container className="py-20 md:py-28">
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fibre-light">{eyebrow}</p>
+        <h1 className="mt-5 max-w-3xl font-display text-4xl leading-[1.05] font-medium md:text-6xl">{title}</h1>
+        {intro && <p className="mt-6 max-w-2xl text-lg text-paper/80">{intro}</p>}
       </Container>
     </section>
   );
