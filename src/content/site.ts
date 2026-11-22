@@ -13,8 +13,8 @@ export const site = {
   // TODO: paste your profile URLs; empty ones are hidden automatically
   social: {
     linkedin: "https://www.linkedin.com/in/sworuprajpoudel",
-    github: "",
-    facebook: "",
+    github: "https://github.com/mesrp88",
+    facebook: "https://www.facebook.com/share/1FEjbz5u31/",
     instagram: "https://www.instagram.com/sworupraj__",
   },
   stats: [
