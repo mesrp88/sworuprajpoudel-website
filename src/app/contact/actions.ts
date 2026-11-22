@@ -67,9 +67,10 @@ export async function sendEnquiry(_prev: ContactState, formData: FormData): Prom
         text,
       }),
     });
-    if (!res.ok) throw new Error(`Resend responded ${res.status}`);
+    if (!res.ok) throw new Error(`Resend responded ${res.status}: ${await res.text()}`);
   } catch (err) {
-    console.error("[contact] Failed to send", err);
+    // Keep the enquiry in the logs so it is never lost.
+    console.error("[contact] Failed to send email. Enquiry:\n" + text + "\n\nReason:", err);
     return {
       status: "error",
       message: "Sorry, something went wrong sending your message. Please try WhatsApp or phone instead.",
