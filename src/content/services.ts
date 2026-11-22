@@ -16,6 +16,7 @@ export const services: Service[] = [
     ],
     forWho:
       "Social enterprises, NGOs and start-ups launching menstrual hygiene products, and manufacturers moving away from plastic-based pads.",
+    image: "/images/fibre-in-hand.jpg",
   },
   {
     slug: "machinery",
@@ -45,5 +46,6 @@ export const services: Service[] = [
     ],
     forWho:
       "Anyone setting up a new line who wants an independent technical opinion before spending money.",
+    image: "/images/consulting-product-review.jpg",
   },
 ];

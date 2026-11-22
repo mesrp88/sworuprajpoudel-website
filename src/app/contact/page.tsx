@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Container, PageHeader } from "@/components/ui";
+import { Container, PageHeader, Photo } from "@/components/ui";
 import { site } from "@/content/site";
 import { ContactForm } from "./ContactForm";
 
@@ -19,6 +19,12 @@ export default function ContactPage() {
       <Container className="grid gap-12 py-16 md:grid-cols-[1.6fr_1fr]">
         <ContactForm />
         <aside className="space-y-6">
+          <Photo
+            src="/images/sworup-with-product.jpg"
+            alt="Sworup Raj Poudel reviewing a natural-fibre sanitary pad"
+            className="aspect-[4/3]"
+            position="58% 40%"
+          />
           <div className="rounded-2xl border border-line p-6">
             <h2 className="font-display text-xl">Prefer to message directly?</h2>
             <ul className="mt-4 space-y-3 text-sm">

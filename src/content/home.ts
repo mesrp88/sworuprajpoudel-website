@@ -44,7 +44,7 @@ export const applications = [
   { title: "Sanitary pads", group: "Menstrual care", note: "Compostable absorbent cores" },
   { title: "Panty liners", group: "Menstrual care", note: "Thin natural-fibre layers" },
   { title: "Reusable cloth pads", group: "Menstrual care", note: "Hemp and other textile fibres" },
-  { title: "Absorbent cores", group: "Components", note: "For pads and other hygiene products" },
+  { title: "Absorbent cores", group: "Components", note: "For pads and other hygiene products", image: "/images/banana-fibre-closeup.jpg" },
   { title: "Fibre paper & board", group: "Materials", note: "From banana fibre and bagasse" },
   { title: "Moulded packaging", group: "Materials", note: "From sugarcane bagasse pulp" },
 ];

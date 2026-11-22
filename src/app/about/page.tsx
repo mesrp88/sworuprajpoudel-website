@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Reveal } from "@/components/Reveal";
-import { ButtonLink, Container, Eyebrow, PhotoPlaceholder } from "@/components/ui";
+import Image from "next/image";
+import { ButtonLink, Container, Eyebrow, Photo } from "@/components/ui";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -41,8 +42,18 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="hero-backdrop text-paper">
-        <Container className="py-24 md:py-32">
+      <section className="relative overflow-hidden bg-ink text-paper">
+        <Image
+          src="/images/sworup-with-product.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+          style={{ objectPosition: "60% 40%" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#13221a] via-[#13221a]/85 to-[#13221a]/30" />
+        <Container className="relative py-24 md:py-32">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fibre-light">My story</p>
           <h1 className="mt-5 max-w-3xl font-display text-5xl leading-[1.05] font-medium md:text-7xl">
             Built in the workshop, <em className="text-fibre-light">tested</em> in the lab.
@@ -65,7 +76,12 @@ export default function AboutPage() {
       <section>
         <Container className="grid gap-12 py-24 md:grid-cols-[1fr_1.3fr]">
           <Reveal>
-            <PhotoPlaceholder label="portrait" className="aspect-[4/5]" />
+            <Photo
+              src="/images/consulting-product-review.jpg"
+              alt="Sworup Raj Poudel explaining a compostable sanitary pad product"
+              className="aspect-[4/5]"
+              position="54% 40%"
+            />
           </Reveal>
           <Reveal delay={150}>
             <Eyebrow>How it started</Eyebrow>

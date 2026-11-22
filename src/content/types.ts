@@ -7,6 +7,7 @@ export type Service = {
   summary: string;
   points: string[];
   forWho: string;
+  image?: string;
 };
 
 export type Material = {
@@ -18,6 +19,7 @@ export type Material = {
   properties: string[];
   processing: string[];
   products: string[];
+  image?: string;
 };
 
 export type Project = {

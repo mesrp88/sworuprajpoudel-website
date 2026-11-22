@@ -1,7 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ProcessIcon } from "@/components/Icons";
 import { Reveal } from "@/components/Reveal";
-import { ButtonLink, Container, Eyebrow, PhotoPlaceholder, Tag } from "@/components/ui";
+import { ButtonLink, Container, Eyebrow, Media, Photo, PhotoPlaceholder, Tag } from "@/components/ui";
 import { applications, faqs, processSteps } from "@/content/home";
 import { site } from "@/content/site";
 import { getMaterials, getProjects, getServices } from "@/lib/content";
@@ -12,9 +13,19 @@ export default async function Home() {
   return (
     <>
       {/* Full-bleed hero */}
-      <section className="hero-backdrop relative overflow-hidden text-paper">
-        {/* TODO: replace .hero-backdrop with a full-width photo of fibre or the production line */}
-        <Container className="flex min-h-[86vh] flex-col justify-end pt-24 pb-16 md:pb-24">
+      <section className="relative overflow-hidden bg-ink text-paper">
+        <Image
+          src="/images/consulting-meeting.jpg"
+          alt="Sworup Raj Poudel discussing compostable sanitary pads in a consultation meeting"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+          style={{ objectPosition: "50% 35%" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#13221a] via-[#13221a]/70 to-[#13221a]/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#13221a]/80 to-transparent" />
+        <Container className="relative flex min-h-[88vh] flex-col justify-end pt-24 pb-16 md:pb-24">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fibre-light">
             Natural fibres · Engineered solutions
           </p>
@@ -50,6 +61,12 @@ export default async function Home() {
               <br />
               <span className="text-clay">Machine.</span>
             </p>
+            <Photo
+              src="/images/fibre-in-hand.jpg"
+              alt="Hands pulling apart processed banana fibre"
+              className="mt-10 aspect-[4/3]"
+              position="55% 60%"
+            />
           </Reveal>
           <Reveal delay={150}>
             <p className="font-display text-2xl leading-snug md:text-3xl">
@@ -110,7 +127,17 @@ export default async function Home() {
             {applications.map((a, i) => (
               <Reveal key={a.title} delay={(i % 3) * 100}>
                 <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl">
-                  <div className="fibre-pattern absolute inset-0 transition-transform duration-700 group-hover:scale-105" />
+                  {"image" in a && a.image ? (
+                    <Image
+                      src={a.image}
+                      alt=""
+                      fill
+                      sizes="(min-width: 1024px) 33vw, 50vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="fibre-pattern absolute inset-0 transition-transform duration-700 group-hover:scale-105" />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/10 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 p-6 text-paper">
                     <p className="text-xs uppercase tracking-widest text-fibre-light">{a.group}</p>
@@ -137,7 +164,7 @@ export default async function Home() {
             {services.map((s, i) => (
               <Reveal key={s.slug}>
                 <div className={`grid items-center gap-10 md:grid-cols-2 ${i % 2 ? "md:[&>*:first-child]:order-2" : ""}`}>
-                  <PhotoPlaceholder label={s.title} className="aspect-[5/4]" />
+                  <Media src={s.image} alt={s.title} className="aspect-[5/4]" />
                   <div>
                     <p className="font-display text-clay">0{i + 1}</p>
                     <h3 className="mt-2 font-display text-3xl font-medium">{s.title}</h3>
@@ -249,8 +276,10 @@ export default async function Home() {
       </section>
 
       {/* Closing statement + CTA */}
-      <section className="hero-backdrop -mb-24 text-paper">
-        <Container className="py-28 text-center">
+      <section className="relative -mb-24 overflow-hidden bg-ink text-paper">
+        <Image src="/images/banana-fibre-closeup.jpg" alt="" fill sizes="100vw" className="object-cover" />
+        <div className="absolute inset-0 bg-[#13221a]/80" />
+        <Container className="relative py-28 text-center">
           <p className="font-display text-5xl leading-tight font-medium md:text-7xl">
             From fibre, <em className="text-fibre-light">back to soil</em>.
           </p>

@@ -3,7 +3,7 @@ export const site = {
   role: "Mechanical Engineer · Technical Lead Engineer",
   url: "https://sworuprajpoudel.com.np",
   tagline:
-    "Engineering compostable hygiene products from natural fibres — from raw fibre to running machine.",
+    "Compostable hygiene products from natural fibres — from raw fibre to running machine.",
   shortBio:
     "I'm a mechanical engineer and Technical Lead Engineer at NIDISI-Sparsa Nepal, where we make compostable sanitary pads from banana fibre. I help entrepreneurs, NGOs and manufacturers turn natural fibres into hygiene products — and design, select and source the machines that make them.",
   location: "Bharatpur, Chitwan, Nepal",

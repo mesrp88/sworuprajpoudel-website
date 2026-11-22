@@ -23,6 +23,7 @@ export const materials: Material[] = [
       "Drying and forming into an absorbent core",
     ],
     products: ["Sanitary pad absorbent cores", "Paper and board", "Textiles and composites"],
+    image: "/images/banana-fibre-closeup.jpg",
   },
   {
     slug: "sugarcane-bagasse",

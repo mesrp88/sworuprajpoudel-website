@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { ReactNode } from "react";
 
 export function Container({ children, className = "" }: { children: ReactNode; className?: string }) {
@@ -52,4 +53,32 @@ export function PhotoPlaceholder({ label, className = "" }: { label: string; cla
 
 export function Tag({ children }: { children: ReactNode }) {
   return <span className="rounded-full border border-line bg-paper px-3 py-1 text-xs text-ink-soft">{children}</span>;
+}
+
+/** A real photo filling its box. Pass object-position to control the crop. */
+export function Photo({
+  src,
+  alt,
+  className = "",
+  position = "center",
+  priority = false,
+  sizes = "(min-width: 768px) 50vw, 100vw",
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+  position?: string;
+  priority?: boolean;
+  sizes?: string;
+}) {
+  return (
+    <div className={`relative overflow-hidden rounded-2xl ${className}`}>
+      <Image src={src} alt={alt} fill sizes={sizes} priority={priority} className="object-cover" style={{ objectPosition: position }} />
+    </div>
+  );
+}
+
+/** Uses the photo when there is one, otherwise the striped placeholder. */
+export function Media({ src, alt, className = "", position }: { src?: string; alt: string; className?: string; position?: string }) {
+  return src ? <Photo src={src} alt={alt} className={className} position={position} /> : <PhotoPlaceholder label={alt} className={className} />;
 }

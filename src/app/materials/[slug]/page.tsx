@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ButtonLink, Container, Eyebrow, PhotoPlaceholder } from "@/components/ui";
+import { ButtonLink, Container, Eyebrow, Media } from "@/components/ui";
 import { getMaterial, getMaterials } from "@/lib/content";
 
 export async function generateStaticParams() {
@@ -43,7 +43,7 @@ export default async function MaterialPage({ params }: PageProps<"/materials/[sl
           </ol>
         </div>
         <div className="space-y-6">
-          <PhotoPlaceholder label={m.name} className="aspect-square" />
+          <Media src={m.image} alt={m.name} className="aspect-square" />
           <div className="rounded-2xl border border-line p-6">
             <h2 className="font-display text-xl">Key properties</h2>
             <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm text-ink-soft">
