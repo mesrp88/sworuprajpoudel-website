@@ -52,11 +52,11 @@ export default function AboutPage() {
           className="object-cover"
           style={{ objectPosition: "60% 40%" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#13221a] via-[#13221a]/85 to-[#13221a]/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-leaf-night via-leaf-night/85 to-leaf-night/30" />
         <Container className="relative py-24 md:py-32">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fibre-light">My story</p>
+          <p className="font-display font-medium text-sm text-fibre-light">My story</p>
           <h1 className="mt-5 max-w-3xl font-display text-5xl leading-[1.05] font-medium md:text-7xl">
-            Built in the workshop, <em className="text-fibre-light">tested</em> in the lab.
+            Built in the workshop, tested in the lab.
           </h1>
           <p className="mt-8 max-w-2xl text-lg text-paper/80">
             I&apos;m {site.name}, a mechanical engineer from Nepal working where natural fibres meet machines.
@@ -125,9 +125,8 @@ export default function AboutPage() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {research.map((r, i) => (
               <Reveal key={r.title} delay={i * 100}>
-                <div className="h-full rounded-2xl border border-line bg-paper p-6">
-                  <p className="font-display text-clay">0{i + 1}</p>
-                  <h3 className="mt-3 font-display text-xl font-medium">{r.title}</h3>
+                <div className="h-full rounded-md border border-line bg-paper p-6">
+                  <h3 className="font-display text-xl font-medium">{r.title}</h3>
                   <p className="mt-2 text-sm text-ink-soft">{r.text}</p>
                 </div>
               </Reveal>
@@ -146,7 +145,7 @@ export default function AboutPage() {
               <li key={m.title} className="relative pb-12 last:pb-0">
                 <span className="absolute top-1.5 -left-[41px] h-4 w-4 rounded-full border-4 border-paper bg-leaf" />
                 <Reveal delay={i * 80}>
-                  <p className="text-sm font-semibold uppercase tracking-widest text-fibre">{m.when}</p>
+                  <p className="font-display font-medium text-sm text-fibre">{m.when}</p>
                   <h3 className="mt-1 font-display text-2xl font-medium">{m.title}</h3>
                   <p className="mt-2 text-ink-soft">{m.text}</p>
                 </Reveal>
@@ -159,7 +158,7 @@ export default function AboutPage() {
       {/* Values */}
       <section className="bg-leaf text-paper">
         <Container className="py-24">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fibre-light">How I work</p>
+          <p className="font-display font-medium text-sm text-fibre-light">How I work</p>
           <div className="mt-10 grid gap-10 md:grid-cols-3">
             {values.map((v) => (
               <div key={v.title} className="border-t border-paper/25 pt-6">
@@ -174,13 +173,13 @@ export default function AboutPage() {
       {/* Mission & vision */}
       <section>
         <Container className="grid gap-10 py-24 md:grid-cols-2">
-          <div className="fibre-pattern rounded-3xl border border-line p-10">
+          <div className="fibre-pattern rounded-lg border border-line p-10">
             <Eyebrow>Mission</Eyebrow>
             <p className="mt-4 font-display text-2xl leading-snug">
               Help more people make affordable, compostable hygiene products from fibres that grow around them.
             </p>
           </div>
-          <div className="rounded-3xl border border-line p-10">
+          <div className="rounded-lg border border-line p-10">
             <Eyebrow>Vision</Eyebrow>
             <p className="mt-4 font-display text-2xl leading-snug">
               Period care that&apos;s good for the people who use it and returns to the soil when it&apos;s done.
@@ -188,7 +187,7 @@ export default function AboutPage() {
           </div>
         </Container>
         <Container className="text-center">
-          <ButtonLink href="/contact">Work with me →</ButtonLink>
+          <ButtonLink href="/contact">Work with me</ButtonLink>
         </Container>
       </section>
     </>

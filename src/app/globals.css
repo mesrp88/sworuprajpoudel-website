@@ -1,19 +1,27 @@
 @import "tailwindcss";
 
+/*
+  Palette taken from the banana plant itself:
+  leaf     – mature banana leaf (primary)
+  fibre    – processed fibre / dried stem (warm neutral accent)
+  blossom  – banana flower bract; also echoes the Sparsa pack colour in the photos
+  paper    – pale, unbleached fibre sheet (background)
+*/
 @theme {
-  --color-paper: #f5f1e8;
-  --color-paper-deep: #ebe4d4;
-  --color-ink: #1d2a22;
-  --color-ink-soft: #4a564e;
-  --color-leaf: #2f5d3a;
-  --color-leaf-dark: #1f3f28;
-  --color-fibre: #c08a3e;
-  --color-fibre-light: #e8cfa3;
-  --color-line: #d8cfbc;
-  --color-clay: #b4492f;
+  --color-paper: #f2f1ea;
+  --color-paper-deep: #e5e3d6;
+  --color-ink: #18221c;
+  --color-ink-soft: #4b5750;
+  --color-leaf: #2c5a36;
+  --color-leaf-dark: #1c3d25;
+  --color-leaf-night: #132219;
+  --color-fibre: #9c7b42;
+  --color-fibre-light: #ddcca4;
+  --color-line: #d6d4c6;
+  --color-clay: #7b2d3e; /* banana blossom */
 
-  --font-display: "Fraunces Variable", Georgia, serif;
-  --font-sans: "Inter Variable", system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque Variable", "Arial Narrow", system-ui, sans-serif;
+  --font-sans: "Source Serif 4 Variable", Georgia, serif;
 }
 
 html {
@@ -25,53 +33,124 @@ body {
   background: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  line-height: 1.6;
+  font-optical-sizing: auto;
 }
 
-/* subtle paper grain */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.35;
-  background-image: radial-gradient(rgba(29, 42, 34, 0.06) 1px, transparent 1px);
-  background-size: 4px 4px;
-}
-
-main,
-header,
-footer {
-  position: relative;
-  z-index: 1;
-}
-
-.font-display {
+/* Grotesque for headings, UI and labels; serif stays for reading text. */
+.font-display,
+h1,
+h2,
+h3,
+nav,
+button,
+label,
+summary,
+input,
+select,
+textarea {
   font-family: var(--font-display);
   font-optical-sizing: auto;
 }
 
-/* fibre-strand pattern used on placeholders and accents */
-.fibre-pattern {
-  background-color: var(--color-paper-deep);
-  background-image: repeating-linear-gradient(
-      115deg,
-      rgba(192, 138, 62, 0.18) 0 2px,
-      transparent 2px 9px
-    ),
-    repeating-linear-gradient(
-      100deg,
-      rgba(47, 93, 58, 0.1) 0 1px,
-      transparent 1px 14px
-    );
+/* Headlines: condensed width, tight leading — the site's typographic signature. */
+h1,
+h2,
+.font-display[class*="text-5xl"],
+.font-display[class*="text-6xl"],
+.font-display[class*="text-7xl"] {
+  font-stretch: 82%;
+  letter-spacing: -0.015em;
+  line-height: 1.02;
 }
 
-/* dark fibrous backdrop for full-bleed photo areas until real photos arrive */
-.hero-backdrop {
-  background-color: #1a2e21;
+h3 {
+  font-stretch: 92%;
+  line-height: 1.15;
+}
+
+::selection {
+  background: var(--color-fibre-light);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-clay);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Fibre-strand texture: used where a photo is still missing. */
+.fibre-pattern {
+  background-color: var(--color-paper-deep);
   background-image:
-    radial-gradient(ellipse at 75% 30%, rgba(192, 138, 62, 0.35), transparent 55%),
-    radial-gradient(ellipse at 15% 85%, rgba(47, 93, 58, 0.6), transparent 60%),
-    repeating-linear-gradient(112deg, rgba(232, 207, 163, 0.07) 0 1px, transparent 1px 7px),
-    repeating-linear-gradient(97deg, rgba(232, 207, 163, 0.05) 0 1px, transparent 1px 13px);
+    repeating-linear-gradient(112deg, rgba(156, 123, 66, 0.14) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(97deg, rgba(44, 90, 54, 0.08) 0 1px, transparent 1px 13px);
+}
+
+/* Dark leaf-green backdrop with the same strands, for headers without a photo. */
+.hero-backdrop {
+  background-color: var(--color-leaf-night);
+  background-image:
+    repeating-linear-gradient(112deg, rgba(221, 204, 164, 0.06) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(97deg, rgba(221, 204, 164, 0.04) 0 1px, transparent 1px 13px);
+}
+
+/* The one orchestrated motion: homepage hero entrance. */
+@keyframes rise {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes settle {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.hero-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+}
+.hero-line > span {
+  display: inline-block;
+  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.1, 1) both;
+}
+.hero-line:nth-child(2) > span {
+  animation-delay: 0.12s;
+}
+.hero-line:nth-child(3) > span {
+  animation-delay: 0.24s;
+}
+.hero-fade {
+  animation: fade-in 0.8s ease-out 0.55s both;
+}
+.hero-photo {
+  animation: settle 2.4s cubic-bezier(0.2, 0.7, 0.1, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-line > span,
+  .hero-fade,
+  .hero-photo {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }

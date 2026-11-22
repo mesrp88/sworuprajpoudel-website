@@ -22,7 +22,7 @@ export default async function PostPage({ params }: PageProps<"/insights/[slug]">
       <Link href="/insights" className="text-sm text-leaf hover:underline">
         ← All insights
       </Link>
-      <time className="mt-8 block text-xs uppercase tracking-widest text-fibre" dateTime={p.date}>
+      <time className="font-display font-medium mt-8 block text-sm text-fibre" dateTime={p.date}>
         {new Date(p.date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}
       </time>
       <h1 className="mt-3 font-display text-4xl leading-tight font-medium">{p.title}</h1>

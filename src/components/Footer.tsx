@@ -21,7 +21,7 @@ export function Footer() {
           </p>
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-fibre-light">Explore</p>
+          <p className="font-display font-medium text-sm text-fibre-light">Explore</p>
           <ul className="mt-4 space-y-2 text-sm">
             {nav.map((n) => (
               <li key={n.href}>
@@ -38,7 +38,7 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-fibre-light">Get in touch</p>
+          <p className="font-display font-medium text-sm text-fibre-light">Get in touch</p>
           <ul className="mt-4 space-y-2 text-sm">
             <li>{site.location}</li>
             <li>
@@ -73,7 +73,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-paper/10 py-5 text-center text-xs text-paper/50">
-        © <CopyrightYear /> {site.name} · Photos courtesy of NIDISI Nepal
+        © <CopyrightYear /> {site.name}. Photos courtesy of NIDISI Nepal.
       </div>
     </footer>
   );

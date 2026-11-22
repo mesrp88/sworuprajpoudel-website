@@ -18,20 +18,19 @@ export default async function ServicesPage() {
         intro="Work with me on one stage or the whole journey — from choosing a fibre to commissioning the line."
       />
       <Container className="divide-y divide-line">
-        {services.map((s, i) => (
+        {services.map((s) => (
           <section key={s.slug} id={s.slug} className="grid scroll-mt-24 gap-8 py-16 md:grid-cols-[1fr_1.4fr]">
             <div>
-              <p className="font-display text-fibre">0{i + 1}</p>
-              <h2 className="mt-2 font-display text-3xl font-medium">{s.title}</h2>
+              <h2 className="font-display text-3xl font-medium">{s.title}</h2>
               <p className="mt-4 text-ink-soft">{s.summary}</p>
-              <p className="mt-6 rounded-xl bg-paper-deep/70 p-4 text-sm">
+              <p className="mt-6 rounded-md bg-paper-deep/70 p-4 text-sm">
                 <span className="font-semibold">Good fit for: </span>
                 {s.forWho}
               </p>
             </div>
             <ul className="space-y-3">
               {s.points.map((p) => (
-                <li key={p} className="flex gap-3 rounded-xl border border-line bg-paper p-4">
+                <li key={p} className="flex gap-3 rounded-md border border-line bg-paper p-4">
                   <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-leaf" />
                   <span>{p}</span>
                 </li>
@@ -41,7 +40,7 @@ export default async function ServicesPage() {
         ))}
       </Container>
       <Container className="pt-8 text-center">
-        <ButtonLink href="/contact">Discuss your project →</ButtonLink>
+        <ButtonLink href="/contact">Discuss your project</ButtonLink>
       </Container>
     </>
   );

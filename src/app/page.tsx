@@ -9,6 +9,7 @@ import { getMaterials, getProjects, getServices } from "@/lib/content";
 
 export default async function Home() {
   const [services, materials, projects] = await Promise.all([getServices(), getMaterials(), getProjects()]);
+  const groups = [...new Set(applications.map((a) => a.group))];
 
   return (
     <>
@@ -20,29 +21,35 @@ export default async function Home() {
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+          className="hero-photo object-cover"
           style={{ objectPosition: "50% 35%" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#13221a] via-[#13221a]/70 to-[#13221a]/20" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#13221a]/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-leaf-night via-leaf-night/70 to-leaf-night/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-leaf-night/85 to-transparent" />
         <Container className="relative flex h-[calc(100svh-var(--header-h))] min-h-[30rem] flex-col justify-end py-[clamp(1.5rem,6vh,4rem)]">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fibre-light">
-            Natural fibres · Engineered solutions
-          </p>
-          <h1 className="mt-[clamp(0.75rem,2.5vh,1.5rem)] max-w-4xl font-display text-[clamp(2.4rem,min(9vw,10.5svh),6rem)] leading-[1.02] font-medium">
-            Engineering what <em className="text-fibre-light">nature</em> already grew.
+          <p className="hero-fade font-display text-base font-medium text-fibre-light">Consulting from Bharatpur, Nepal</p>
+          <h1 className="mt-[clamp(0.5rem,2vh,1.25rem)] font-display text-[clamp(3rem,min(12.5vw,13svh),8.5rem)] leading-[0.92] font-bold">
+            <span className="hero-line">
+              <span>Engineering what</span>
+            </span>
+            <span className="hero-line">
+              <span>nature already</span>
+            </span>
+            <span className="hero-line">
+              <span>grew.</span>
+            </span>
           </h1>
-          <p className="mt-[clamp(1rem,3vh,2rem)] max-w-xl text-base text-paper/80 md:text-lg">{site.tagline}</p>
-          <div className="mt-[clamp(1.25rem,4vh,2.5rem)] flex flex-wrap gap-3">
+          <p className="hero-fade mt-[clamp(0.75rem,2.5vh,1.75rem)] max-w-xl text-base text-paper/85 md:text-lg">{site.tagline}</p>
+          <div className="hero-fade mt-[clamp(1rem,3.5vh,2.25rem)] flex flex-wrap gap-3">
             <Link
               href="/contact"
-              className="rounded-full bg-paper px-6 py-3 text-sm font-medium text-ink transition-colors hover:bg-fibre-light"
+              className="rounded-md bg-paper px-6 py-3 font-display font-semibold text-ink transition-colors hover:bg-fibre-light"
             >
-              Book a consultation →
+              Book a consultation
             </Link>
             <Link
               href="#process"
-              className="rounded-full border border-paper/40 px-6 py-3 text-sm font-medium transition-colors hover:border-paper"
+              className="rounded-md border border-paper/40 px-6 py-3 font-display font-semibold transition-colors hover:border-paper"
             >
               See the process
             </Link>
@@ -59,11 +66,11 @@ export default async function Home() {
               <br />
               Process.
               <br />
-              <span className="text-clay">Machine.</span>
+              Machine.
             </p>
             <Photo
-              src="/images/fibre-in-hand.jpg"
-              alt="Hands pulling apart processed banana fibre"
+              src="/images/banana-fibre-closeup.jpg"
+              alt="Processed banana fibre fluff next to a Sparsa pad box"
               className="mt-10 aspect-[4/3]"
               position="55% 60%"
             />
@@ -76,7 +83,7 @@ export default async function Home() {
             <p className="mt-6 text-lg text-ink-soft">{site.shortBio}</p>
             <div className="mt-8">
               <ButtonLink href="/about" variant="ghost">
-                My story →
+                My story
               </ButtonLink>
             </div>
           </Reveal>
@@ -123,29 +130,21 @@ export default async function Home() {
             <Eyebrow>Naturally designed for everyday products</Eyebrow>
             <h2 className="mt-3 max-w-2xl font-display text-4xl font-medium md:text-5xl">What natural fibre can become.</h2>
           </Reveal>
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {applications.map((a, i) => (
-              <Reveal key={a.title} delay={(i % 3) * 100}>
-                <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl">
-                  {"image" in a && a.image ? (
-                    <Image
-                      src={a.image}
-                      alt=""
-                      fill
-                      sizes="(min-width: 1024px) 33vw, 50vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div className="fibre-pattern absolute inset-0 transition-transform duration-700 group-hover:scale-105" />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/10 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-6 text-paper">
-                    <p className="text-xs uppercase tracking-widest text-fibre-light">{a.group}</p>
-                    <h3 className="mt-1 font-display text-2xl">{a.title}</h3>
-                    <p className="text-sm text-paper/75">{a.note}</p>
-                  </div>
-                </div>
-              </Reveal>
+          <div className="mt-12 grid gap-x-10 gap-y-12 md:grid-cols-3">
+            {groups.map((g) => (
+              <div key={g}>
+                <p className="font-display text-base font-medium text-clay">{g}</p>
+                <ul className="mt-3 border-t border-ink/80">
+                  {applications
+                    .filter((a) => a.group === g)
+                    .map((a) => (
+                      <li key={a.title} className="border-b border-line py-4">
+                        <h3 className="font-display text-2xl font-semibold">{a.title}</h3>
+                        <p className="mt-0.5 text-ink-soft">{a.note}</p>
+                      </li>
+                    ))}
+                </ul>
+              </div>
             ))}
           </div>
         </Container>
@@ -164,10 +163,9 @@ export default async function Home() {
             {services.map((s, i) => (
               <Reveal key={s.slug}>
                 <div className={`grid items-center gap-10 md:grid-cols-2 ${i % 2 ? "md:[&>*:first-child]:order-2" : ""}`}>
-                  <Media src={s.image} alt={s.title} className="aspect-[5/4]" />
+                  <Media src={s.image} alt={s.title} className="aspect-[5/4]" icon={s.slug === "machinery" ? "machine" : undefined} />
                   <div>
-                    <p className="font-display text-clay">0{i + 1}</p>
-                    <h3 className="mt-2 font-display text-3xl font-medium">{s.title}</h3>
+                    <h3 className="font-display text-3xl font-medium">{s.title}</h3>
                     <p className="mt-4 text-lg text-ink-soft">{s.summary}</p>
                     <ul className="mt-6 space-y-2">
                       {s.points.slice(0, 3).map((p) => (
@@ -181,7 +179,7 @@ export default async function Home() {
                       href={`/services#${s.slug}`}
                       className="mt-6 inline-block text-sm font-medium text-leaf underline-offset-4 hover:underline"
                     >
-                      More about this →
+                      More about this
                     </Link>
                   </div>
                 </div>
@@ -201,11 +199,11 @@ export default async function Home() {
           className="object-cover"
           style={{ objectPosition: "50% 45%" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#13221a] via-[#13221a]/85 to-[#13221a]/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-leaf-night via-leaf-night/85 to-leaf-night/30" />
         <Container className="relative py-28">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fibre-light">Research, development & testing</p>
+          <p className="font-display font-medium text-sm text-fibre-light">Research, development & testing</p>
           <h2 className="mt-3 max-w-xl font-display text-4xl font-medium md:text-5xl">
-            Evidence <em className="text-fibre-light">before</em> production.
+            Evidence before production.
           </h2>
           <p className="mt-5 max-w-lg text-lg text-paper/80">
             Fibre treatment trials, absorbency tests and test-liquid research — so every improvement is backed by
@@ -213,9 +211,9 @@ export default async function Home() {
           </p>
           <Link
             href="/research"
-            className="mt-8 inline-block rounded-full bg-paper px-6 py-3 text-sm font-medium text-ink transition-colors hover:bg-fibre-light"
+            className="mt-8 inline-block rounded-md bg-paper px-6 py-3 text-sm font-medium text-ink transition-colors hover:bg-fibre-light"
           >
-            Inside the lab →
+            Inside the lab
           </Link>
         </Container>
       </section>
@@ -223,23 +221,23 @@ export default async function Home() {
       {/* Materials band */}
       <section className="bg-leaf text-paper">
         <Container className="py-24">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fibre-light">Regenerative materials</p>
+          <p className="font-display font-medium text-sm text-fibre-light">Regenerative materials</p>
           <h2 className="mt-3 max-w-2xl font-display text-4xl font-medium md:text-5xl">
             Agricultural waste today. Compostable products tomorrow.
           </h2>
           <Link
             href="/materials#buy"
-            className="mt-6 inline-block rounded-full border border-paper/40 px-5 py-2.5 text-sm font-medium transition-colors hover:border-paper"
+            className="mt-6 inline-block rounded-md border border-paper/40 px-5 py-2.5 text-sm font-medium transition-colors hover:border-paper"
           >
-            Buy banana fibre & fluff →
+            Buy banana fibre & fluff
           </Link>
-          <div className="mt-14 grid gap-px overflow-hidden rounded-2xl bg-paper/15 md:grid-cols-3">
+          <div className="mt-14 grid gap-px overflow-hidden rounded-md bg-paper/15 md:grid-cols-3">
             {materials.map((m) => (
               <Link key={m.slug} href={`/materials/${m.slug}`} className="group bg-leaf p-8 transition-colors hover:bg-leaf-dark">
                 <h3 className="font-display text-3xl">{m.name}</h3>
                 <p className="mt-1 text-sm text-fibre-light">{m.tagline}</p>
                 <p className="mt-5 text-sm text-paper/75">{m.summary}</p>
-                <p className="mt-8 text-sm font-medium group-hover:underline">Explore →</p>
+                <p className="mt-8 text-sm font-medium group-hover:underline">Explore</p>
               </Link>
             ))}
           </div>
@@ -267,15 +265,15 @@ export default async function Home() {
               <h2 className="mt-3 font-display text-4xl font-medium md:text-5xl">Projects</h2>
             </div>
             <ButtonLink href="/projects" variant="ghost">
-              All projects →
+              All projects
             </ButtonLink>
           </div>
           <div className="mt-12 grid gap-8 md:grid-cols-3">
             {projects.slice(0, 3).map((p, i) => (
               <Reveal key={p.slug} delay={i * 120}>
                 <Link href={`/projects/${p.slug}`} className="group block">
-                  <Media src={p.image} alt={p.title} className="aspect-[4/3]" />
-                  <p className="mt-4 text-xs uppercase tracking-widest text-clay">{p.category}</p>
+                  <Media src={p.image} alt={p.title} icon={p.category === "Machinery" ? "machine" : undefined} className="aspect-[4/3]" />
+                  <p className="font-display font-medium mt-4 text-sm text-clay">{p.category}</p>
                   <h3 className="mt-1 font-display text-xl font-medium group-hover:text-leaf">{p.title}</h3>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {p.tags.slice(0, 2).map((t) => (
@@ -313,20 +311,18 @@ export default async function Home() {
       {/* Closing statement + CTA */}
       <section className="relative -mb-24 overflow-hidden bg-ink text-paper">
         <Image src="/images/banana-fibre-closeup.jpg" alt="" fill sizes="100vw" className="object-cover" />
-        <div className="absolute inset-0 bg-[#13221a]/80" />
+        <div className="absolute inset-0 bg-leaf-night/80" />
         <Container className="relative py-28 text-center">
-          <p className="font-display text-5xl leading-tight font-medium md:text-7xl">
-            From fibre, <em className="text-fibre-light">back to soil</em>.
-          </p>
+          <h2 className="font-display text-6xl font-bold md:text-8xl">From fibre, back to soil.</h2>
           <p className="mx-auto mt-6 max-w-xl text-lg text-paper/80">
             Planning a compostable pad line, or stuck on a machine? Tell me what you&apos;re working on.
           </p>
           <div className="mt-10 flex justify-center">
             <Link
               href="/contact"
-              className="rounded-full bg-paper px-6 py-3 text-sm font-medium text-ink transition-colors hover:bg-fibre-light"
+              className="rounded-md bg-paper px-6 py-3 text-sm font-medium text-ink transition-colors hover:bg-fibre-light"
             >
-              Start a conversation →
+              Start a conversation
             </Link>
           </div>
         </Container>

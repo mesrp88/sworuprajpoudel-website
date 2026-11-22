@@ -18,7 +18,7 @@ export function Header() {
           </span>
           <span className="leading-tight">
             <span className="block font-display text-lg font-semibold">{site.name}</span>
-            <span className="block text-xs text-ink-soft">Natural-fibre hygiene · Machinery</span>
+            <span className="block text-xs text-ink-soft">Natural-fibre products and machinery</span>
           </span>
         </Link>
 
@@ -39,7 +39,7 @@ export function Header() {
           })}
           <Link
             href="/contact"
-            className="rounded-full bg-leaf px-4 py-2 text-sm font-medium text-paper transition-colors hover:bg-leaf-dark"
+            className="rounded-md bg-leaf px-4 py-2 text-sm font-medium text-paper transition-colors hover:bg-leaf-dark"
           >
             Book a consultation
           </Link>
@@ -73,7 +73,7 @@ export function Header() {
           <Link
             href="/contact"
             onClick={() => setOpen(false)}
-            className="mt-4 block rounded-full bg-leaf px-4 py-3 text-center font-medium text-paper"
+            className="mt-4 block rounded-md bg-leaf px-4 py-3 text-center font-medium text-paper"
           >
             Book a consultation
           </Link>

@@ -8,7 +8,7 @@ import { sendEnquiry, type ContactState } from "./actions";
 const initial: ContactState = { status: "idle" };
 
 const field =
-  "mt-1.5 w-full rounded-xl border border-line bg-paper px-4 py-3 text-base outline-none transition focus:border-leaf focus:ring-2 focus:ring-leaf/20";
+  "mt-1.5 w-full rounded-md border border-line bg-paper px-4 py-3 text-base outline-none transition focus:border-leaf focus:ring-2 focus:ring-leaf/20";
 
 export function ContactForm() {
   const [state, action, pending] = useActionState(sendEnquiry, initial);
@@ -18,7 +18,7 @@ export function ContactForm() {
 
   if (state.status === "success") {
     return (
-      <div className="rounded-2xl border border-leaf/30 bg-leaf/5 p-8" role="status">
+      <div className="rounded-md border border-leaf/30 bg-leaf/5 p-8" role="status">
         <p className="font-display text-2xl text-leaf">Message sent</p>
         <p className="mt-2 text-ink-soft">{state.message ?? "Thank you — I'll be in touch soon."}</p>
       </div>
@@ -102,7 +102,7 @@ export function ContactForm() {
       </label>
 
       {state.status === "error" && state.message && (
-        <p className="rounded-xl bg-red-50 p-4 text-sm text-red-800" role="alert">
+        <p className="rounded-md bg-red-50 p-4 text-sm text-red-800" role="alert">
           {state.message}
         </p>
       )}
@@ -110,7 +110,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={pending}
-        className="rounded-full bg-leaf px-6 py-3 font-medium text-paper transition-colors hover:bg-leaf-dark disabled:opacity-60"
+        className="rounded-md bg-leaf px-6 py-3 font-medium text-paper transition-colors hover:bg-leaf-dark disabled:opacity-60"
       >
         {pending ? "Sending…" : "Send enquiry"}
       </button>

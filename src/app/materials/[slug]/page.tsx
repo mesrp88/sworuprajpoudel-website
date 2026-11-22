@@ -44,7 +44,7 @@ export default async function MaterialPage({ params }: PageProps<"/materials/[sl
         </div>
         <div className="space-y-6">
           <Media src={m.image} alt={m.name} className="aspect-square" />
-          <div className="rounded-2xl border border-line p-6">
+          <div className="rounded-md border border-line p-6">
             <h2 className="font-display text-xl">Key properties</h2>
             <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm text-ink-soft">
               {m.properties.map((p) => (
@@ -62,7 +62,7 @@ export default async function MaterialPage({ params }: PageProps<"/materials/[sl
       </div>
 
       <div className="mt-14 flex flex-wrap gap-3">
-        <ButtonLink href="/contact">Ask about {m.name.toLowerCase()} →</ButtonLink>
+        <ButtonLink href="/contact">Ask about {m.name.toLowerCase()}</ButtonLink>
         {m.slug === "banana-fibre" && (
           <ButtonLink href="/materials#buy" variant="ghost">
             Buy banana fibre or fluff

@@ -28,7 +28,7 @@ export default function ContactPage() {
             className="aspect-[4/3]"
             position="58% 40%"
           />
-          <div className="rounded-2xl border border-line p-6">
+          <div className="rounded-md border border-line p-6">
             <h2 className="font-display text-xl">Prefer to message directly?</h2>
             <ul className="mt-4 space-y-3 text-sm">
               <li>
@@ -38,7 +38,7 @@ export default function ContactPage() {
                   rel="noopener"
                   className="font-medium text-leaf hover:underline"
                 >
-                  WhatsApp →
+                  WhatsApp
                 </a>
               </li>
               <li>
@@ -56,7 +56,7 @@ export default function ContactPage() {
               <li className="text-ink-soft">{site.location}</li>
             </ul>
           </div>
-          <div className="fibre-pattern rounded-2xl border border-line p-6 text-sm">
+          <div className="fibre-pattern rounded-md border border-line p-6 text-sm">
             <p className="font-semibold">Helpful to include</p>
             <ul className="mt-2 list-disc space-y-1 pl-5 text-ink-soft">
               <li>What you want to make, and roughly how many per day</li>

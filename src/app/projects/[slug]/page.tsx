@@ -27,7 +27,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
         ))}
       </div>
 
-      <Media src={p.image} alt={p.title} className="mt-10 aspect-[16/9]" />
+      <Media src={p.image} alt={p.title} icon={p.category === "Machinery" ? "machine" : undefined} className="mt-10 aspect-[16/9]" />
 
       <div className="mt-12 grid gap-10 md:grid-cols-3">
         <section>
@@ -53,13 +53,13 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
       </div>
 
       {p.draft && (
-        <p className="mt-12 rounded-xl bg-paper-deep/70 p-4 text-sm text-ink-soft">
+        <p className="mt-12 rounded-md bg-paper-deep/70 p-4 text-sm text-ink-soft">
           This case study is being written up — photos, drawings and results will be added soon.
         </p>
       )}
 
       <div className="mt-12 flex flex-wrap gap-3">
-        <ButtonLink href="/contact">Need something similar? →</ButtonLink>
+        <ButtonLink href="/contact">Need something similar?</ButtonLink>
         <ButtonLink href="/projects" variant="ghost">
           All projects
         </ButtonLink>

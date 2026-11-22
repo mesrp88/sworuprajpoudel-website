@@ -1,6 +1,6 @@
 export const site = {
   name: "Sworup Raj Poudel",
-  role: "Mechanical Engineer · Research and Product Development Engineer",
+  role: "Research and Product Development Engineer",
   url: "https://sworuprajpoudel.com.np",
   tagline:
     "Compostable hygiene products from natural fibres — from raw fibre to running machine.",

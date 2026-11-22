@@ -42,12 +42,12 @@ export default async function MaterialsPage() {
           </div>
           <div className="mt-12 grid gap-8 md:grid-cols-2">
             {fibreProducts.map((p) => (
-              <div key={p.slug} className="overflow-hidden rounded-2xl border border-line bg-paper">
+              <div key={p.slug} className="overflow-hidden rounded-md border border-line bg-paper">
                 <Media src={p.image} alt={p.name} className="aspect-[16/9] rounded-none" position={p.position} />
                 <div className="p-7">
                   <h3 className="font-display text-2xl font-medium">{p.name}</h3>
                   <p className="mt-2 text-ink-soft">{p.summary}</p>
-                  <p className="mt-5 text-xs font-semibold uppercase tracking-widest text-fibre">Used for</p>
+                  <p className="font-display font-medium mt-5 text-sm text-fibre">Used for</p>
                   <ul className="mt-2 space-y-1.5 text-sm">
                     {p.uses.map((u) => (
                       <li key={u} className="flex gap-3">
@@ -57,7 +57,7 @@ export default async function MaterialsPage() {
                     ))}
                   </ul>
                   <div className="mt-7 flex flex-wrap items-center gap-4">
-                    <ButtonLink href={`/contact?interest=buy&product=${p.slug}`}>Request a quote →</ButtonLink>
+                    <ButtonLink href={`/contact?interest=buy&product=${p.slug}`}>Request a quote</ButtonLink>
                     <span className="text-xs text-ink-soft">Samples available</span>
                   </div>
                 </div>

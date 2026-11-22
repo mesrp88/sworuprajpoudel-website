@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import "@fontsource-variable/fraunces";
-import "@fontsource-variable/inter";
+import "@fontsource-variable/bricolage-grotesque/standard.css";
+import "@fontsource-variable/source-serif-4/standard.css";
+import "@fontsource-variable/source-serif-4/standard-italic.css";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";

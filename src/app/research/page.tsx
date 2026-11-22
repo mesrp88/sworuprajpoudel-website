@@ -28,11 +28,11 @@ export default async function ResearchPage() {
           className="object-cover"
           style={{ objectPosition: "40% 55%" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#13221a] via-[#13221a]/80 to-[#13221a]/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-leaf-night via-leaf-night/80 to-leaf-night/10" />
         <Container className="relative py-28 md:py-40">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fibre-light">Research, development & testing</p>
+          <p className="font-display font-medium text-sm text-fibre-light">Research, development & testing</p>
           <h1 className="mt-5 max-w-2xl font-display text-5xl leading-[1.05] font-medium md:text-7xl">
-            Evidence <em className="text-fibre-light">before</em> production.
+            Evidence before production.
           </h1>
           <p className="mt-8 max-w-xl text-lg text-paper/80">
             Every improvement to a natural-fibre pad starts in the lab: treating fibre, testing absorbency and measuring
@@ -114,7 +114,7 @@ export default async function ResearchPage() {
       {/* Offers */}
       <section className="bg-leaf text-paper">
         <Container className="py-24">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fibre-light">How I can help</p>
+          <p className="font-display font-medium text-sm text-fibre-light">How I can help</p>
           <h2 className="mt-3 max-w-2xl font-display text-4xl font-medium md:text-5xl">R&D support for your product.</h2>
           <div className="mt-12 grid gap-10 md:grid-cols-3">
             {rdOffers.map((o) => (
@@ -136,15 +136,15 @@ export default async function ResearchPage() {
               <h2 className="mt-3 font-display text-4xl font-medium">Recent work</h2>
             </div>
             <ButtonLink href="/projects" variant="ghost">
-              All projects →
+              All projects
             </ButtonLink>
           </div>
           <div className="mt-12 grid gap-8 md:grid-cols-3">
             {research.slice(0, 3).map((p) =>
               (
                 <Link key={p.slug} href={`/projects/${p.slug}`} className="group block">
-                  <Media src={p.image} alt={p.title} className="aspect-[4/3]" />
-                  <p className="mt-4 text-xs uppercase tracking-widest text-clay">{p.category}</p>
+                  <Media src={p.image} alt={p.title} icon={p.category === "Machinery" ? "machine" : undefined} className="aspect-[4/3]" />
+                  <p className="font-display font-medium mt-4 text-sm text-clay">{p.category}</p>
                   <h3 className="mt-1 font-display text-xl font-medium group-hover:text-leaf">{p.title}</h3>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {p.tags.slice(0, 2).map((t) => (
@@ -156,7 +156,7 @@ export default async function ResearchPage() {
             )}
           </div>
           <div className="mt-16 text-center">
-            <ButtonLink href="/contact">Discuss an R&D project →</ButtonLink>
+            <ButtonLink href="/contact">Discuss an R&D project</ButtonLink>
           </div>
         </Container>
       </section>
