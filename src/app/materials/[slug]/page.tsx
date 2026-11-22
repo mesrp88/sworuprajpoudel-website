@@ -63,6 +63,11 @@ export default async function MaterialPage({ params }: PageProps<"/materials/[sl
 
       <div className="mt-14 flex flex-wrap gap-3">
         <ButtonLink href="/contact">Ask about {m.name.toLowerCase()} →</ButtonLink>
+        {m.slug === "banana-fibre" && (
+          <ButtonLink href="/materials#buy" variant="ghost">
+            Buy banana fibre or fluff
+          </ButtonLink>
+        )}
         <ButtonLink href="/materials" variant="ghost">
           All materials
         </ButtonLink>

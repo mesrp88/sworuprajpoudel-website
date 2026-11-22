@@ -1,6 +1,8 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import { useActionState } from "react";
+import { fibreProducts } from "@/content/products";
 import { sendEnquiry, type ContactState } from "./actions";
 
 const initial: ContactState = { status: "idle" };
@@ -10,6 +12,9 @@ const field =
 
 export function ContactForm() {
   const [state, action, pending] = useActionState(sendEnquiry, initial);
+  const params = useSearchParams();
+  const buying = params.get("interest") === "buy";
+  const product = fibreProducts.find((p) => p.slug === params.get("product"));
 
   if (state.status === "success") {
     return (
@@ -58,15 +63,34 @@ export function ContactForm() {
         </label>
         <label className="block text-sm font-medium">
           Interested in
-          <select name="interest" className={field} defaultValue="">
+          <select name="interest" className={field} defaultValue={buying ? "Buying fibre or fluff" : ""}>
             <option value="">Select</option>
             <option>Product & process consulting</option>
             <option>Machinery design & selection</option>
             <option>Machine & raw-material sourcing</option>
+            <option>R&D & product testing</option>
+            <option>Buying fibre or fluff</option>
             <option>Something else</option>
           </select>
         </label>
       </div>
+      {buying && (
+        <div className="grid gap-5 sm:grid-cols-2">
+          <label className="block text-sm font-medium">
+            Product
+            <select name="product" className={field} defaultValue={product?.name ?? ""}>
+              <option value="">Select</option>
+              {fibreProducts.map((p) => (
+                <option key={p.slug}>{p.name}</option>
+              ))}
+            </select>
+          </label>
+          <label className="block text-sm font-medium">
+            Quantity needed
+            <input name="quantity" placeholder="e.g. 1 kg sample, 500 kg/month" className={field} />
+          </label>
+        </div>
+      )}
       <label className="block text-sm font-medium">
         Country
         <input name="country" className={field} autoComplete="country-name" />

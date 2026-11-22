@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Container, PageHeader, Photo } from "@/components/ui";
 import { site } from "@/content/site";
 import { ContactForm } from "./ContactForm";
@@ -17,7 +18,9 @@ export default function ContactPage() {
         intro="Share a few details and I'll get back to you. The more you tell me about your product, scale and location, the more useful my first reply will be."
       />
       <Container className="grid gap-12 py-16 md:grid-cols-[1.6fr_1fr]">
-        <ContactForm />
+        <Suspense>
+          <ContactForm />
+        </Suspense>
         <aside className="space-y-6">
           <Photo
             src="/images/sworup-with-product.jpg"

@@ -22,6 +22,8 @@ export async function sendEnquiry(_prev: ContactState, formData: FormData): Prom
     type: String(formData.get("type") ?? "").trim(),
     interest: String(formData.get("interest") ?? "").trim(),
     country: String(formData.get("country") ?? "").trim(),
+    product: String(formData.get("product") ?? "").trim(),
+    quantity: String(formData.get("quantity") ?? "").trim(),
     message: String(formData.get("message") ?? "").trim(),
   };
 
@@ -38,6 +40,7 @@ export async function sendEnquiry(_prev: ContactState, formData: FormData): Prom
     `Organisation: ${data.organisation || "-"}`,
     `Type: ${data.type || "-"}`,
     `Interested in: ${data.interest || "-"}`,
+    ...(data.product || data.quantity ? [`Product: ${data.product || "-"}`, `Quantity: ${data.quantity || "-"}`] : []),
     `Country: ${data.country || "-"}`,
     "",
     data.message,

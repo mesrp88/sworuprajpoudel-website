@@ -227,6 +227,12 @@ export default async function Home() {
           <h2 className="mt-3 max-w-2xl font-display text-4xl font-medium md:text-5xl">
             Agricultural waste today. Compostable products tomorrow.
           </h2>
+          <Link
+            href="/materials#buy"
+            className="mt-6 inline-block rounded-full border border-paper/40 px-5 py-2.5 text-sm font-medium transition-colors hover:border-paper"
+          >
+            Buy banana fibre & fluff →
+          </Link>
           <div className="mt-14 grid gap-px overflow-hidden rounded-2xl bg-paper/15 md:grid-cols-3">
             {materials.map((m) => (
               <Link key={m.slug} href={`/materials/${m.slug}`} className="group bg-leaf p-8 transition-colors hover:bg-leaf-dark">
