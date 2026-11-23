@@ -1,19 +1,39 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Chapter } from "@/components/Chapter";
 import { ConsultingOptions } from "@/components/ConsultingOptions";
-import { ProcessIcon } from "@/components/Icons";
+import { ProcessScrolly } from "@/components/ProcessScrolly";
 import { Reveal } from "@/components/Reveal";
-import { ButtonLink, Container, Eyebrow, Media, Photo, Tag } from "@/components/ui";
+import { SectionDots } from "@/components/SectionDots";
+import { ButtonLink, Container, Media, Photo, Tag } from "@/components/ui";
 import { applications, faqs, processSteps } from "@/content/home";
 import { site } from "@/content/site";
 import { getMaterials, getProjects, getServices } from "@/lib/content";
 
 export default async function Home() {
-  const [services, materials, projects] = await Promise.all([getServices(), getMaterials(), getProjects()]);
+  const [services, materials, projects] = await Promise.all([
+    getServices(),
+    getMaterials(),
+    getProjects(),
+  ]);
   const groups = [...new Set(applications.map((a) => a.group))];
 
   return (
     <>
+      <SectionDots
+        items={[
+          { id: "idea", label: "The idea" },
+          { id: "process", label: "Soil to soil" },
+          { id: "products", label: "What fibre becomes" },
+          { id: "help", label: "Where I can help" },
+          { id: "options", label: "Ways to work together" },
+          { id: "lab", label: "Inside the lab" },
+          { id: "materials", label: "Materials" },
+          { id: "work", label: "Selected work" },
+          { id: "faq", label: "Questions" },
+          { id: "talk", label: "Let's talk" },
+        ]}
+      />
       {/* Full-bleed hero */}
       <section className="relative overflow-hidden bg-ink text-paper">
         <Image
@@ -28,7 +48,10 @@ export default async function Home() {
         <div className="absolute inset-0 bg-gradient-to-t from-leaf-night via-leaf-night/70 to-leaf-night/20" />
         <div className="absolute inset-0 bg-gradient-to-r from-leaf-night/85 to-transparent" />
         <Container className="relative flex h-[calc(100svh-var(--header-h))] min-h-[30rem] flex-col justify-end py-[clamp(1.5rem,6vh,4rem)]">
-          <p className="hero-fade font-display text-base font-medium text-fibre-light">Consulting from Bharatpur, Nepal</p>
+          <p className="hero-fade inline-flex w-fit items-center gap-2.5 rounded-full border border-paper/25 bg-paper/10 px-4 py-1.5 font-display text-sm font-medium text-paper/90 backdrop-blur-sm">
+            <span className="h-2 w-2 rounded-full bg-fibre-light" />
+            Natural-fibre consulting · Bharatpur, Nepal
+          </p>
           <h1 className="mt-[clamp(0.5rem,2vh,1.25rem)] font-display text-[clamp(3rem,min(12.5vw,13svh),8.5rem)] leading-[0.92] font-bold">
             <span className="hero-line">
               <span>Engineering what</span>
@@ -40,7 +63,9 @@ export default async function Home() {
               <span>grew.</span>
             </span>
           </h1>
-          <p className="hero-fade mt-[clamp(0.75rem,2.5vh,1.75rem)] max-w-xl text-base text-paper/85 md:text-lg">{site.tagline}</p>
+          <p className="hero-fade mt-[clamp(0.75rem,2.5vh,1.75rem)] max-w-xl text-base text-paper/85 md:text-lg">
+            {site.tagline}
+          </p>
           <div className="hero-fade mt-[clamp(1rem,3.5vh,2.25rem)] flex flex-wrap gap-3">
             <Link
               href="/contact"
@@ -59,64 +84,62 @@ export default async function Home() {
       </section>
 
       {/* Poetic intro */}
-      <section>
-        <Container className="grid gap-12 py-24 md:grid-cols-[1fr_1.4fr] md:py-32">
-          <Reveal>
-            <p className="font-display text-6xl leading-[0.95] font-medium text-leaf md:text-7xl">
-              Fibre.
-              <br />
-              Process.
-              <br />
-              Machine.
-            </p>
-            <Photo
-              src="/images/banana-fibre-closeup.jpg"
-              alt="Processed banana fibre fluff next to a Sparsa pad box"
-              className="mt-10 aspect-[4/3]"
-              position="55% 60%"
-            />
-          </Reveal>
-          <Reveal delay={150}>
-            <p className="font-display text-2xl leading-snug md:text-3xl">
-              What if the stem left behind after a banana harvest could become a sanitary pad — one that returns to
-              the soil instead of lasting for centuries?
-            </p>
-            <p className="mt-6 text-lg text-ink-soft">{site.shortBio}</p>
-            <div className="mt-8">
-              <ButtonLink href="/about" variant="ghost">
-                My story
-              </ButtonLink>
-            </div>
-          </Reveal>
+      <section id="idea" data-chapter="The idea" className="scroll-mt-20">
+        <Container className="py-24 md:py-32">
+          <Chapter n="01">The idea</Chapter>
+          <div className="mt-10 grid gap-12 md:grid-cols-[1fr_1.4fr]">
+            <Reveal>
+              <p className="font-display text-6xl leading-[0.95] font-medium text-leaf md:text-7xl">
+                Fibre.
+                <br />
+                Process.
+                <br />
+                Machine.
+              </p>
+              <Photo
+                src="/images/banana-fibre-closeup.jpg"
+                alt="Processed banana fibre fluff next to a Sparsa pad box"
+                className="mt-10 aspect-[4/3]"
+                position="55% 60%"
+              />
+            </Reveal>
+            <Reveal delay={150}>
+              <p className="font-display text-2xl leading-snug md:text-3xl">
+                What if the stem left behind after a banana harvest could become
+                a sanitary pad — one that returns to the soil instead of lasting
+                for centuries?
+              </p>
+              <p className="mt-6 text-lg text-ink-soft">{site.shortBio}</p>
+              <div className="mt-8">
+                <ButtonLink href="/about" variant="ghost">
+                  My story
+                </ButtonLink>
+              </div>
+            </Reveal>
+          </div>
         </Container>
       </section>
 
       {/* Process strip: soil to soil */}
-      <section id="process" className="scroll-mt-20 border-y border-line/70 bg-paper-deep/40">
+      <section
+        id="process"
+        data-chapter="Soil to soil"
+        className="scroll-mt-20 border-y border-line/70 bg-paper-deep/40"
+      >
         <Container className="py-24">
           <Reveal>
-            <Eyebrow>Soil to soil</Eyebrow>
+            <Chapter n="02">Soil to soil</Chapter>
             <h2 className="mt-3 max-w-2xl font-display text-4xl font-medium md:text-5xl">
               From plant waste to finished product — and back.
             </h2>
           </Reveal>
-          <ol className="mt-16 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
-            {processSteps.map((s, i) => (
-              <li key={s.n}>
-                <Reveal delay={(i % 3) * 120}>
-                  <div className="flex items-center gap-4 text-leaf">
-                    <ProcessIcon name={s.icon} />
-                    <span className="font-display text-5xl text-line">{s.n}</span>
-                  </div>
-                  <h3 className="mt-5 font-display text-2xl font-medium">{s.title}</h3>
-                  <p className="mt-2 text-ink-soft">{s.text}</p>
-                </Reveal>
-              </li>
-            ))}
-          </ol>
+          <ProcessScrolly steps={processSteps} />
           <p className="mt-16 text-sm text-ink-soft">
             I can help at every step —{" "}
-            <Link href="/services" className="font-medium text-leaf underline-offset-4 hover:underline">
+            <Link
+              href="/services"
+              className="font-medium text-leaf underline-offset-4 hover:underline"
+            >
               see services
             </Link>
             .
@@ -125,22 +148,32 @@ export default async function Home() {
       </section>
 
       {/* Applications grid */}
-      <section>
+      <section
+        id="products"
+        data-chapter="What fibre becomes"
+        className="scroll-mt-20"
+      >
         <Container className="py-24">
           <Reveal>
-            <Eyebrow>Naturally designed for everyday products</Eyebrow>
-            <h2 className="mt-3 max-w-2xl font-display text-4xl font-medium md:text-5xl">What natural fibre can become.</h2>
+            <Chapter n="03">What fibre becomes</Chapter>
+            <h2 className="mt-3 max-w-2xl font-display text-4xl font-medium md:text-5xl">
+              What natural fibre can become.
+            </h2>
           </Reveal>
           <div className="mt-12 grid gap-x-10 gap-y-12 md:grid-cols-3">
             {groups.map((g) => (
               <div key={g}>
-                <p className="font-display text-base font-medium text-clay">{g}</p>
+                <p className="font-display text-base font-medium text-clay">
+                  {g}
+                </p>
                 <ul className="mt-3 border-t border-ink/80">
                   {applications
                     .filter((a) => a.group === g)
                     .map((a) => (
                       <li key={a.title} className="border-b border-line py-4">
-                        <h3 className="font-display text-2xl font-semibold">{a.title}</h3>
+                        <h3 className="font-display text-2xl font-semibold">
+                          {a.title}
+                        </h3>
                         <p className="mt-0.5 text-ink-soft">{a.note}</p>
                       </li>
                     ))}
@@ -152,10 +185,14 @@ export default async function Home() {
       </section>
 
       {/* Services: alternating image/text */}
-      <section className="border-t border-line/70">
+      <section
+        id="help"
+        data-chapter="Where I can help"
+        className="scroll-mt-20 border-t border-line/70"
+      >
         <Container className="py-24">
           <Reveal>
-            <Eyebrow>Where I can help</Eyebrow>
+            <Chapter n="04">Where I can help</Chapter>
             <h2 className="mt-3 max-w-2xl font-display text-4xl font-medium md:text-5xl">
               Engineering support, from first idea to running line.
             </h2>
@@ -163,10 +200,19 @@ export default async function Home() {
           <div className="mt-16 space-y-20">
             {services.map((s, i) => (
               <Reveal key={s.slug}>
-                <div className={`grid items-center gap-10 md:grid-cols-2 ${i % 2 ? "md:[&>*:first-child]:order-2" : ""}`}>
-                  <Media src={s.image} alt={s.title} className="aspect-[5/4]" icon={s.slug === "machinery" ? "machine" : undefined} />
+                <div
+                  className={`grid items-center gap-10 md:grid-cols-2 ${i % 2 ? "md:[&>*:first-child]:order-2" : ""}`}
+                >
+                  <Media
+                    src={s.image}
+                    alt={s.title}
+                    className="aspect-[5/4]"
+                    icon={s.slug === "machinery" ? "machine" : undefined}
+                  />
                   <div>
-                    <h3 className="font-display text-3xl font-medium">{s.title}</h3>
+                    <h3 className="font-display text-3xl font-medium">
+                      {s.title}
+                    </h3>
                     <p className="mt-4 text-lg text-ink-soft">{s.summary}</p>
                     <ul className="mt-6 space-y-2">
                       {s.points.slice(0, 3).map((p) => (
@@ -191,10 +237,16 @@ export default async function Home() {
       </section>
 
       {/* Ways to work together */}
-      <section id="options" className="scroll-mt-20 border-t border-line/70 bg-paper-deep/40">
+      <section
+        id="options"
+        data-chapter="Ways to work together"
+        className="scroll-mt-20 border-t border-line/70 bg-paper-deep/40"
+      >
         <Container className="py-24">
-          <Eyebrow>Ways to work together</Eyebrow>
-          <h2 className="mt-3 max-w-2xl font-display text-4xl font-semibold md:text-5xl">Start with a free 15-minute call.</h2>
+          <Chapter n="05">Ways to work together</Chapter>
+          <h2 className="mt-3 max-w-2xl font-display text-4xl font-semibold md:text-5xl">
+            Start with a free 15-minute call.
+          </h2>
           <div className="mt-12">
             <ConsultingOptions />
           </div>
@@ -202,7 +254,11 @@ export default async function Home() {
       </section>
 
       {/* R&D teaser */}
-      <section className="relative overflow-hidden bg-ink text-paper">
+      <section
+        id="lab"
+        data-chapter="Inside the lab"
+        className="scroll-mt-20 relative overflow-hidden bg-ink text-paper"
+      >
         <Image
           src="/images/lab-overhead.jpg"
           alt=""
@@ -213,13 +269,15 @@ export default async function Home() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-leaf-night via-leaf-night/85 to-leaf-night/30" />
         <Container className="relative py-28">
-          <p className="font-display font-medium text-sm text-fibre-light">Research, development & testing</p>
+          <Chapter n="06" dark>
+            Inside the lab
+          </Chapter>
           <h2 className="mt-3 max-w-xl font-display text-4xl font-medium md:text-5xl">
             Evidence before production.
           </h2>
           <p className="mt-5 max-w-lg text-lg text-paper/80">
-            Fibre treatment trials, absorbency tests and test-liquid research — so every improvement is backed by
-            results.
+            Fibre treatment trials, absorbency tests and test-liquid research —
+            so every improvement is backed by results.
           </p>
           <Link
             href="/research"
@@ -231,9 +289,15 @@ export default async function Home() {
       </section>
 
       {/* Materials band */}
-      <section className="bg-leaf text-paper">
+      <section
+        id="materials"
+        data-chapter="Materials"
+        className="scroll-mt-20 bg-leaf text-paper"
+      >
         <Container className="py-24">
-          <p className="font-display font-medium text-sm text-fibre-light">Regenerative materials</p>
+          <Chapter n="07" dark>
+            Materials
+          </Chapter>
           <h2 className="mt-3 max-w-2xl font-display text-4xl font-medium md:text-5xl">
             Agricultural waste today. Compostable products tomorrow.
           </h2>
@@ -245,11 +309,17 @@ export default async function Home() {
           </Link>
           <div className="mt-14 grid gap-px overflow-hidden rounded-md bg-paper/15 md:grid-cols-3">
             {materials.map((m) => (
-              <Link key={m.slug} href={`/materials/${m.slug}`} className="group bg-leaf p-8 transition-colors hover:bg-leaf-dark">
+              <Link
+                key={m.slug}
+                href={`/materials/${m.slug}`}
+                className="group bg-leaf p-8 transition-colors hover:bg-leaf-dark"
+              >
                 <h3 className="font-display text-3xl">{m.name}</h3>
                 <p className="mt-1 text-sm text-fibre-light">{m.tagline}</p>
                 <p className="mt-5 text-sm text-paper/75">{m.summary}</p>
-                <p className="mt-8 text-sm font-medium group-hover:underline">Explore</p>
+                <p className="mt-8 text-sm font-medium group-hover:underline">
+                  Explore
+                </p>
               </Link>
             ))}
           </div>
@@ -269,12 +339,18 @@ export default async function Home() {
       </section>
 
       {/* Projects */}
-      <section className="border-t border-line/70">
+      <section
+        id="work"
+        data-chapter="Selected work"
+        className="scroll-mt-20 border-t border-line/70"
+      >
         <Container className="py-24">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <Eyebrow>Selected work</Eyebrow>
-              <h2 className="mt-3 font-display text-4xl font-medium md:text-5xl">Projects</h2>
+              <Chapter n="08">Selected work</Chapter>
+              <h2 className="mt-3 font-display text-4xl font-medium md:text-5xl">
+                Projects
+              </h2>
             </div>
             <ButtonLink href="/projects" variant="ghost">
               All projects
@@ -284,9 +360,18 @@ export default async function Home() {
             {projects.slice(0, 3).map((p, i) => (
               <Reveal key={p.slug} delay={i * 120}>
                 <Link href={`/projects/${p.slug}`} className="group block">
-                  <Media src={p.image} alt={p.title} icon={p.category === "Machinery" ? "machine" : undefined} className="aspect-[4/3]" />
-                  <p className="font-display font-medium mt-4 text-sm text-clay">{p.category}</p>
-                  <h3 className="mt-1 font-display text-xl font-medium group-hover:text-leaf">{p.title}</h3>
+                  <Media
+                    src={p.image}
+                    alt={p.title}
+                    icon={p.category === "Machinery" ? "machine" : undefined}
+                    className="aspect-[4/3]"
+                  />
+                  <p className="font-display font-medium mt-4 text-sm text-clay">
+                    {p.category}
+                  </p>
+                  <h3 className="mt-1 font-display text-xl font-medium group-hover:text-leaf">
+                    {p.title}
+                  </h3>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {p.tags.slice(0, 2).map((t) => (
                       <Tag key={t}>{t}</Tag>
@@ -300,20 +385,33 @@ export default async function Home() {
       </section>
 
       {/* FAQ */}
-      <section className="border-t border-line/70 bg-paper-deep/40">
+      <section
+        id="faq"
+        data-chapter="Questions"
+        className="scroll-mt-20 border-t border-line/70 bg-paper-deep/40"
+      >
         <Container className="grid gap-12 py-24 md:grid-cols-[1fr_1.5fr]">
           <div>
-            <Eyebrow>Questions</Eyebrow>
-            <h2 className="mt-3 font-display text-4xl font-medium">Frequently asked</h2>
+            <Chapter n="09">Questions</Chapter>
+            <h2 className="mt-3 font-display text-5xl font-semibold">
+              Things you might be wondering.
+            </h2>
           </div>
           <div className="divide-y divide-line border-y border-line">
-            {faqs.map((f) => (
+            {faqs.map((f, i) => (
               <details key={f.q} className="group py-5">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-6 font-display text-xl">
-                  {f.q}
-                  <span className="text-2xl text-leaf transition-transform group-open:rotate-45">+</span>
+                  <span className="flex gap-5">
+                    <span className="w-8 shrink-0 text-base font-medium text-clay">
+                      Q{i + 1}
+                    </span>
+                    <span>{f.q}</span>
+                  </span>
+                  <span className="text-2xl text-leaf transition-transform group-open:rotate-45">
+                    +
+                  </span>
                 </summary>
-                <p className="mt-3 text-ink-soft">{f.a}</p>
+                <p className="mt-3 pl-[3.25rem] text-ink-soft">{f.a}</p>
               </details>
             ))}
           </div>
@@ -321,22 +419,63 @@ export default async function Home() {
       </section>
 
       {/* Closing statement + CTA */}
-      <section className="relative -mb-24 overflow-hidden bg-ink text-paper">
-        <Image src="/images/banana-fibre-closeup.jpg" alt="" fill sizes="100vw" className="object-cover" />
+      <section
+        id="talk"
+        data-chapter="Let's talk"
+        className="scroll-mt-20 relative -mb-24 overflow-hidden bg-ink text-paper"
+      >
+        <Image
+          src="/images/banana-fibre-closeup.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
         <div className="absolute inset-0 bg-leaf-night/80" />
-        <Container className="relative py-28 text-center">
-          <h2 className="font-display text-6xl font-bold md:text-8xl">From fibre, back to soil.</h2>
-          <p className="mx-auto mt-6 max-w-xl text-lg text-paper/80">
-            Planning a compostable pad line, or stuck on a machine? Tell me what you&apos;re working on.
+        <Container className="relative py-28">
+          <Chapter n="10" dark>
+            Let&apos;s talk
+          </Chapter>
+          <h2 className="mt-6 max-w-4xl font-display text-6xl font-bold md:text-8xl">
+            From fibre, back to soil.
+          </h2>
+          <p className="mt-6 max-w-xl text-lg text-paper/80">
+            Planning a compostable pad line, stuck on a machine, or looking for
+            fibre? Tell me what you&apos;re working on.
           </p>
-          <div className="mt-10 flex justify-center">
+          <div className="mt-10 flex flex-wrap gap-3">
             <Link
-              href="/contact"
-              className="rounded-md bg-paper px-6 py-3 text-sm font-medium text-ink transition-colors hover:bg-fibre-light"
+              href="/contact?option=intro-call"
+              className="rounded-md bg-paper px-6 py-3 font-display font-semibold text-ink transition-colors hover:bg-fibre-light"
             >
-              Start a conversation
+              Book the free 15-minute call
+            </Link>
+            <Link
+              href="/materials#buy"
+              className="rounded-md border border-paper/40 px-6 py-3 font-display font-semibold transition-colors hover:border-paper"
+            >
+              Buy fibre &amp; fluff
             </Link>
           </div>
+          <p className="mt-8 flex flex-wrap gap-x-5 gap-y-2 font-display text-sm text-paper/70">
+            <span>Or reach me directly:</span>
+            <a
+              href={`mailto:${site.email}`}
+              className="underline decoration-paper/30 underline-offset-4 hover:text-paper"
+            >
+              {site.email}
+            </a>
+            {site.social.linkedin && (
+              <a
+                href={site.social.linkedin}
+                target="_blank"
+                rel="noopener"
+                className="underline decoration-paper/30 underline-offset-4 hover:text-paper"
+              >
+                LinkedIn
+              </a>
+            )}
+          </p>
         </Container>
       </section>
     </>
