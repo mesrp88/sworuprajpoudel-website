@@ -158,6 +158,42 @@ export default function AboutPage() {
         </Container>
       </section>
 
+      {/* Machine animation */}
+      <section className="border-t border-line/70">
+        <Container className="grid items-center gap-10 py-24 lg:grid-cols-[1fr_1.7fr]">
+          <div>
+            <Eyebrow>See it working</Eyebrow>
+            <h2 className="mt-3 font-display text-4xl font-semibold md:text-5xl">How the pad-making machine works.</h2>
+            <p className="mt-5 text-lg text-ink-soft">
+              A 40-second walkthrough of a compostable pad line: natural fibre fluff goes in, and finished,
+              sterilised pads come out, in six steps.
+            </p>
+            <ol className="mt-6 list-decimal space-y-1.5 pl-5 font-display text-ink-soft marker:text-clay">
+              <li>Core formation</li>
+              <li>Unwinding the top and barrier layers</li>
+              <li>Glue spraying</li>
+              <li>Compression and sealing</li>
+              <li>Cutting into shape</li>
+              <li>UV sterilisation</li>
+            </ol>
+          </div>
+          <div className="overflow-hidden rounded-md border border-line bg-ink shadow-sm">
+            <video
+              className="aspect-video w-full"
+              controls
+              playsInline
+              preload="none"
+              poster="/videos/compostable-pad-machine-poster.jpg"
+              aria-label="Animation: how a compostable pad machine makes pads from natural fibre in six steps"
+            >
+              <source src="/videos/compostable-pad-machine.mp4" type="video/mp4" />
+              Your browser can&apos;t play this video.{" "}
+              <a href="/videos/compostable-pad-machine.mp4">Download it instead</a>.
+            </video>
+          </div>
+        </Container>
+      </section>
+
       {/* Research */}
       <section className="border-y border-line/70 bg-paper-deep/40">
         <Container className="py-24">
