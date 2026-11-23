@@ -24,7 +24,8 @@ export const fibreProducts: FibreProduct[] = [
     name: "Banana fibre",
     summary: "Natural fibre extracted from banana stems, for further processing.",
     uses: ["Fluff and absorbent material production", "Paper, textiles and composites"],
-    // TODO: add a photo of raw banana fibre
+    image: "/images/raw-banana-fibre.jpg",
+    position: "50% 50%",
   },
 ];
 
