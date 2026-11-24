@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ButtonLink, Container, Media, Eyebrow, Tag } from "@/components/ui";
+import { publications } from "@/content/publications";
 import { getProject, getProjects } from "@/lib/content";
 
 export async function generateStaticParams() {
@@ -51,6 +52,21 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
           <p className="mt-3 text-ink-soft">{p.outcome}</p>
         </section>
       </div>
+
+      {publications
+        .filter((pub) => pub.relatedProject === p.slug)
+        .map((pub) => (
+          <a
+            key={pub.url}
+            href={pub.url}
+            target="_blank"
+            rel="noopener"
+            className="mt-12 block rounded-md border border-leaf/30 bg-leaf/5 p-5 transition-colors hover:border-leaf"
+          >
+            <span className="font-display text-sm font-medium text-clay">Published case study · PANORAMA Solutions</span>
+            <span className="mt-1 block font-display text-xl font-semibold">{pub.title}</span>
+          </a>
+        ))}
 
       {p.draft && (
         <p className="mt-12 rounded-md bg-paper-deep/70 p-4 text-sm text-ink-soft">
