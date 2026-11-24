@@ -10,6 +10,7 @@ export type Publication = {
   covers: string[];
   image: string;
   position?: string;
+  imageAlt: string;
   relatedProject?: string; // project slug
 };
 
@@ -23,8 +24,8 @@ export const publications: Publication[] = [
     summary:
       "How a low-cost, semi-automatic line makes compostable menstrual pads with banana fibre as the absorbent core, replacing plastic parts and creating local jobs.",
     covers: ["Factory layout and workflow", "Fluffy absorbent core making", "Layer assembly", "Machine specs, safety and maintenance"],
-    image: "/images/banana-fibre-closeup.jpg",
-    position: "45% 65%",
+    image: "/images/panorama-pad-process.jpg",
+    imageAlt: "Compostable menstrual pad making process: paper shredder, absorbent core machine, pad making machine and finished pads",
     relatedProject: "core-shifting-dual-glue",
   },
   {
@@ -36,7 +37,8 @@ export const publications: Publication[] = [
     summary:
       "Turning banana stems from local farmers into usable fibre with replicable machines, and composting the leftover biomass back to the farms.",
     covers: ["Sourcing banana fibre", "Automatic stem cutter (3D models)", "Semi-automatic fibre extractor", "Waste to organic compost"],
-    image: "/images/raw-banana-fibre.jpg",
+    image: "/images/panorama-banana-trunks.jpg",
+    imageAlt: "Cut banana trunks ready for fibre extraction",
     relatedProject: "fibre-extractor",
   },
   {
@@ -48,7 +50,8 @@ export const publications: Publication[] = [
     summary:
       "An open-source, low-tech method for making paper from banana fibre at small scale, with shared machine models, factory layout and water-system designs.",
     covers: ["Process flow and factory layout", "Machinery, 3D models and safety", "Water and wastewater systems", "Production and maintenance"],
-    image: "/images/raw-banana-fibre-bundle.jpg",
-    position: "50% 40%",
+    image: "/images/panorama-banana-paper.jpg",
+    imageAlt: "A freshly formed sheet of banana fibre paper in the small-scale paper unit",
+    position: "35% 50%",
   },
 ];

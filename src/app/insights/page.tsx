@@ -38,7 +38,7 @@ export default async function InsightsPage() {
             {publications.map((p) => (
               <li key={p.url}>
                 <article className="grid gap-6 border-t border-line pt-10 md:grid-cols-[1fr_1.6fr] md:gap-10">
-                  <Photo src={p.image} alt="" className="aspect-[4/3]" position={p.position} />
+                  <Photo src={p.image} alt={p.imageAlt} className="aspect-[4/3]" position={p.position} />
                   <div className="flex flex-col">
                     <p className="font-display text-sm font-medium text-clay">
                       {p.publisher} · <time dateTime={p.date}>{fmt(p.date)}</time>
